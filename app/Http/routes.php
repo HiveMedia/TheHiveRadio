@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'StaticController@home');
+// About us page
+Route::get('/about', 'StaticController@aboutus');
 
 //Blog Post
 Route::get('b/{id}', [

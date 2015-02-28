@@ -62,11 +62,14 @@ header #site-header .site-text {
 #site-body .site-content .full-content {
 	width: 100%;
     color: #e0e0e0;
-    padding: 20px 0px;
+    margin: 0% 0%;
+    text
     border-top: solid 4px #262;
     background: rgba(20, 20, 20, 0.8);
 }
-
+#site-body .site-content .heading{
+    text-align: center;
+}
 #site-body .site-right-sidebar {
 	padding: 0px;
 }

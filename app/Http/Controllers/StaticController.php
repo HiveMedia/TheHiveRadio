@@ -26,4 +26,9 @@ class StaticController extends Controller {
     {
         return view('static.home');
     }
+
+    public function aboutus()
+    {
+        return view('static.about');
+    }
 }
