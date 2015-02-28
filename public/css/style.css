@@ -66,33 +66,31 @@ header #site-header .site-text {
     border-top: solid 4px #262;
     background: rgba(20, 20, 20, 0.8);
 }
-#site-body .site-content .heading{
-    text-align: center;
+
+#site-body .site-content .site-staff .staff-item {
+	border: none;
+	padding-top: 15px;
+	height: 175px;
 }
 
-#site-body .site-content .staff-ul {
-    background: rgba(20, 20, 20, 0.8);
-
-    list-style: none;
-    text-align: center;
-    padding: 0px;
-    margin: 0px;
-}
-#site-body .site-content .staff-ul h2 {
+#site-body .site-content .site-staff .staff-item h2 {
      color: #e0e0e0;
 }
 
-#site-body .site-content .staff-ul h4 {
+#site-body .site-content .site-staff .staff-item h4 {
     color: #cacaca;
 }
 
-#site-body .site-content .staff-ul p {
+#site-body .site-content .site-staff .staff-item p {
     color: #aeaeae;
 }
-#site-body .site-content .staff-ul img {
-    max-width: 175px;
+
+#site-body .site-content .site-staff .staff-item img {
+    max-width: 190px;
+    margin-top: -15px;
     float: left;
 }
+
 #site-body .site-right-sidebar {
 	padding: 0px;
 }
@@ -125,12 +123,11 @@ header #site-header .site-text {
 #site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa-google-plus-square { color: #B71C1C; }
 
 
-
 footer {
 	border-top: solid 3px #262;
 	background: rgba(20, 20, 20, 0.8);
 	color: #fff;
-	margin-top: 20px;
+	margin-top: 75px;
 	padding: 0px 20px 15px 20px;
     font-size: 12px;
 }
