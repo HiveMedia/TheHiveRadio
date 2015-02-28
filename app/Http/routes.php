@@ -31,13 +31,13 @@ Route::get('/chat', 'StaticController@chatus');
 /*
  * Dynamic Coded stuffs
  */
-//Blog Post
+// Blog Post
 Route::get('b/{id}', [
 	'as' => 'post', 'uses'=>'Blog@post'
 	])->where('id','[0-9]+');
 
 
-//Blog Pages
+// Blog Pages
 Route::get('b', [
     'uses'=>'Blog@pageone'
 ]);
@@ -48,6 +48,17 @@ Route::get('b/page/', [
 Route::get('b/page/{id}', [
     'as' => 'blogpage', 'uses'=>'Blog@page'
 ])->where('id','[0-9]+');
+
+// Shows
+Route::get('s', [
+    'uses'=>'ShowsController@index'
+]);
+
+Route::get('s/{id}', [
+    'as' => 'showpage', 'uses'=>'ShowsController@show'
+])->where('id','[0-9]+');
+
+
 
 
 Route::controllers([
