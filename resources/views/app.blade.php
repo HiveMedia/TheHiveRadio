@@ -20,10 +20,6 @@
 				<div class="site-logo grid-50">
 					<img src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/logo.png">
 				</div>
-				
-				<!--<div class="site-text grid-45">
-					<img src="{{URL::to('/')}}/img/logo-text.png">
-				</div>		-->
 			</div>
 		</header>
 		<!-- *** END SITE HEADER *** -->

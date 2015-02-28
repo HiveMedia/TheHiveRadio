@@ -12,6 +12,15 @@ a {
 	text-align: center;
 }
 
+.header-center > h1,
+.header-center > h2,
+.header-center > h3,
+.header-center > h4,
+.header-center > h5,
+.header-center > h6 {
+    text-align: center;
+}
+
 header {
 	margin-top: 20px;
 	margin-bottom: 40px;
@@ -64,15 +73,16 @@ header #site-header .site-text {
 }
 
 #site-body .site-content .full-content {
-	width: 100%;
     color: #e0e0e0;
     margin: 0% 0%;
+    padding: 15px 25px;
     border-top: solid 4px #262;
     background: rgba(20, 20, 20, 0.8);
 }
 
 #site-body .site-content .site-staff .staff-item {
 	border: none;
+	padding: 0px;
 	padding-top: 15px;
 	height: 175px;
 }
