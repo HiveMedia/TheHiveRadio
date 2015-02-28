@@ -1,3 +1,5 @@
 .c9/
 *.lock
 .idea/
+/vendors
+.env
