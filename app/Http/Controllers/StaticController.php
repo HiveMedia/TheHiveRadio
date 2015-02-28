@@ -31,6 +31,10 @@ class StaticController extends Controller {
     {
         return view('static.about');
     }
+    public function chatus()
+    {
+        return view('static.chat');
+    }
     public function joinus()
     {
         return view('static.join');
