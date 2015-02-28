@@ -13,9 +13,24 @@
 
 Route::get('/', 'StaticController@home');
 
+//Blog Post
 Route::get('b/{id}', [
-	'as' => 'blog', 'uses'=>'Blog@posts'
+	'as' => 'post', 'uses'=>'Blog@post'
 	])->where('id','[0-9]+');
+
+
+//Blog Pages
+Route::get('b', [
+    'uses'=>'Blog@pageone'
+]);
+Route::get('b/page/', [
+    'as' => 'blogpageone', 'uses'=>'Blog@pageone'
+]);
+
+Route::get('b/page/{id}', [
+    'as' => 'blogpage', 'uses'=>'Blog@page'
+])->where('id','[0-9]+');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -35,7 +35,7 @@
 				<ul class="site-sidebar-ul">
 					<a href="/"><li class="site-sidebar-li {{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
 					<a href="/about"><li class="site-sidebar-li {{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
-					<a href="/blog"><li class="site-sidebar-li {{Request::path() == 'blog' ? 'active' : ''}}">Blog</li></a>
+					<a href="/b"><li class="site-sidebar-li {{Request::path() == 'b' ? 'active' : ''}}">Blog</li></a>
 					<a href="/staff"><li class="site-sidebar-li {{Request::path() == 'staff' ? 'active' : ''}}">Staff</li></a>
 					<a href="/chat"><li class="site-sidebar-li {{Request::path() == 'chat' ? 'active' : ''}}">Chat</li></a>
 					<a href="/shows"><li class="site-sidebar-li {{Request::path() == 'shows' ? 'active' : ''}}">Shows</li></a>
