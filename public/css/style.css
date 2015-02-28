@@ -25,6 +25,10 @@ header #site-header .site-text {
 	margin-top: 18px;
 }
 
+#site-body .fixed-float {
+    position: fixed;
+}
+
 #site-body .site-left-sidebar {
 	background: rgba(20, 20, 20, 0.8);
 	padding: 0px;
@@ -56,7 +60,7 @@ header #site-header .site-text {
 }
 
 #site-body .site-content {
-	margin: 0% 5%;
+	margin-left: 20%;
 }
 
 #site-body .site-content .full-content {
@@ -93,6 +97,7 @@ header #site-header .site-text {
 
 #site-body .site-right-sidebar {
 	padding: 0px;
+	margin-left: 75%;
 }
 
 #site-body .site-right-sidebar .site-sidebar-ul {

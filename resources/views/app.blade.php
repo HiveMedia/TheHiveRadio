@@ -31,7 +31,7 @@
 		<!-- *** SITE BODY *** -->
 		<div id="site-body" class="grid-container">
 			<!-- *** SITE MENU *** -->
-			<div class="site-left-sidebar grid-15">
+			<div class="site-left-sidebar grid-15 fixed-float">
 				<ul class="site-sidebar-ul">
 					<a href="/"><li class="site-sidebar-li {{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
 					<a href="/about"><li class="site-sidebar-li {{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
@@ -51,7 +51,7 @@
 			<!-- *** END MAIN SITE CONTENT *** -->
 			
 			<!-- *** SITE SIDEBAR CONTENT *** -->
-			<div class="site-right-sidebar grid-20">
+			<div class="site-right-sidebar grid-20 fixed-float">
 				<ul class="site-sidebar-ul">
 					
 					@yield('sidebar-items')
@@ -76,6 +76,7 @@
 			</div>
 			<!-- *** END SITE SIDEBAR CONTENT *** -->
 		</div>
+		<!-- *** END SITE BODY *** -->
 		
 		<!-- *** SITE FOOTER *** --->
 		<footer>
