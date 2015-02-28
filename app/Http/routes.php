@@ -25,6 +25,9 @@ Route::get('/join', 'StaticController@joinus');
 // Staff Page
 Route::get('/staff', 'StaticController@staffus');
 
+// Chat Page
+Route::get('/chat', 'StaticController@chatus');
+
 /*
  * Dynamic Coded stuffs
  */
