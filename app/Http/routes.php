@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'StaticController@home');
+Route::get('/home', 'StaticController@home');
+
 
 /*
  *  Static Pages
@@ -58,7 +60,45 @@ Route::get('s/{id}', [
     'as' => 'showpage', 'uses'=>'ShowsController@show'
 ])->where('id','[0-9]+');
 
+// Admin Stuff
 
+
+Route::get('admin', [
+    'uses'=>'Admin\AdminController@index'
+]);
+
+// Create Blog Posts
+Route::get('admin/b/c', [
+    'uses'=>'Admin\BlogAdminController@create'
+]);
+Route::get('admin/b/e/{id}', [
+    'uses'=>'Admin\BlogAdminController@edit'
+])->where('id','[0-9]+');
+
+Route::post('admin/b/e/{id}', [
+    'uses'=>'Admin\BlogAdminController@update'
+])->where('id','[0-9]+');
+
+Route::get('admin/b/h/{id}', [
+    'uses'=>'Admin\BlogAdminController@togpublivity'
+])->where('id','[0-9]+');
+
+Route::post('admin/b/c', [
+    'uses'=>'Admin\BlogAdminController@createPost'
+]);
+Route::get('admin/b/d/{id}', [
+    'uses'=>'Admin\BlogAdminController@delete'
+])->where('id','[0-9]+');
+Route::get('admin/b/dc/{id}', [
+    'uses'=>'Admin\BlogAdminController@DeletePost'
+])->where('id','[0-9]+');
+
+
+
+
+Route::get('admin/b/l', [
+    'uses'=>'Admin\BlogAdminController@index'
+]);
 
 
 Route::controllers([
