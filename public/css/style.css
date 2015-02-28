@@ -1,0 +1,140 @@
+html, body {
+	margin: 0px;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+a { 
+	color: #4c4;
+	text-decoration: none;
+}
+
+.text-center {
+	text-align: center;
+}
+
+header {
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+header img {
+	width: 100%;
+}
+
+header #site-header .site-text {
+	margin-top: 18px;
+}
+
+#site-body .site-left-sidebar {
+	background: rgba(20, 20, 20, 0.8);
+	padding: 0px;
+}
+
+#site-body .site-left-sidebar .site-sidebar-ul {
+	list-style: none;
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}
+
+#site-body .site-left-sidebar .site-sidebar-ul a,
+#site-body .site-left-sidebar .site-sidebar-ul li {
+	margin: 0px;
+	color: #ccc;
+	font-size: 18px;
+	padding: 13px 0px;
+}
+
+#site-body .site-left-sidebar .site-sidebar-ul li  {
+	border-top: solid 4px #262;
+}
+
+#site-body .site-left-sidebar .site-sidebar-ul li:hover,
+#site-body .site-left-sidebar .site-sidebar-ul .active {
+	font-weight: 800;
+	background: rgba(40, 40, 40, 0.8);
+}
+
+#site-body .site-content {
+	margin: 0% 5%;
+}
+
+#site-body .site-content .full-content {
+	width: 100%;
+    color: #e0e0e0;
+    padding: 20px 0px;
+    border-top: solid 4px #262;
+    background: rgba(20, 20, 20, 0.8);
+}
+
+#site-body .site-right-sidebar {
+	padding: 0px;
+}
+
+#site-body .site-right-sidebar .site-sidebar-ul {
+	list-style: none;
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}
+
+#site-body .site-right-sidebar .site-sidebar-ul li {
+	margin: 0px;
+	margin-bottom: 25px;
+	color: #ccc;
+	font-size: 18px;
+	padding: 5px 0px 10px 0px;
+	border-top: solid 4px #262;
+	background: rgba(20, 20, 20, 0.8);
+}
+
+#site-body .site-right-sidebar .site-sidebar-ul li h3 {
+	margin-top: 0px;
+}
+
+#site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa { padding: 0px 10px 10px 0px; }
+#site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa-facebook-square { color: #3B5998; }
+#site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa-twitter-square { color: #4099FF; }
+#site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa-youtube-square { color: #cd201f; }
+#site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa-google-plus-square { color: #B71C1C; }
+
+
+
+footer {
+	border-top: solid 3px #262;
+	background: rgba(20, 20, 20, 0.8);
+	color: #fff;
+	margin-top: 20px;
+	padding: 0px 20px 15px 20px;
+    font-size: 12px;
+}
+
+footer .third {
+	max-width: 33%;
+	width: 33%;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+footer .third img {
+	vertical-align: middle;
+}
+
+footer .third .site-with-love {
+	color: #f00;
+}
+
+#site-background {
+	top: 0em;
+	position: fixed;
+	z-index: -2;
+	background-image: url(../img/backTile.png);
+	background-size: 25px;
+}
+
+#site-background .site-background-img {
+	vertical-align: middle;
+	width: 125%;
+	opacity: 0.5;
+}
