@@ -35,4 +35,8 @@ class StaticController extends Controller {
     {
         return view('static.join');
     }
+    public function staffus()
+    {
+        return view('static.staff');
+    }
 }

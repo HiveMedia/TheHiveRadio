@@ -22,6 +22,8 @@ Route::get('/about', 'StaticController@aboutus');
 // Join us page
 Route::get('/join', 'StaticController@joinus');
 
+// Staff Page
+Route::get('/staff', 'StaticController@staffus');
 
 /*
  * Dynamic Coded stuffs

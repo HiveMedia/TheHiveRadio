@@ -69,6 +69,30 @@ header #site-header .site-text {
 #site-body .site-content .heading{
     text-align: center;
 }
+
+#site-body .site-content .staff-ul {
+    background: rgba(20, 20, 20, 0.8);
+
+    list-style: none;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+#site-body .site-content .staff-ul h2 {
+     color: #e0e0e0;
+}
+
+#site-body .site-content .staff-ul h4 {
+    color: #cacaca;
+}
+
+#site-body .site-content .staff-ul p {
+    color: #aeaeae;
+}
+#site-body .site-content .staff-ul img {
+    max-width: 175px;
+    float: left;
+}
 #site-body .site-right-sidebar {
 	padding: 0px;
 }
