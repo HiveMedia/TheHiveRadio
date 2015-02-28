@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration {
 			$table->string('title');
 			$table->text('body');
 			$table->string('image_url');
-			$table->int('poster_id');
+			$table->integer('poster_id');
             $table->boolean('public');
 			$table->timestamps();
 		});
