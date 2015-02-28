@@ -12,9 +12,20 @@
 */
 
 Route::get('/', 'StaticController@home');
+
+/*
+ *  Static Pages
+ */
 // About us page
 Route::get('/about', 'StaticController@aboutus');
 
+// Join us page
+Route::get('/join', 'StaticController@joinus');
+
+
+/*
+ * Dynamic Coded stuffs
+ */
 //Blog Post
 Route::get('b/{id}', [
 	'as' => 'post', 'uses'=>'Blog@post'

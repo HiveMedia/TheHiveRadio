@@ -31,4 +31,8 @@ class StaticController extends Controller {
     {
         return view('static.about');
     }
+    public function joinus()
+    {
+        return view('static.join');
+    }
 }
