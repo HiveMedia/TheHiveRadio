@@ -105,3 +105,13 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/**
+ * Icebreath API Handling
+ */
+
+// Return a nice API landing page
+Route::get('icebreath', 'IcebreathController@index');
+
+// Handle module calls
+Route::any('icebreath/{all}', 'IcebreathController@module')->where('all', '.*');
