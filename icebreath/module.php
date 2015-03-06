@@ -1,4 +1,4 @@
-<?php namespace Icebreath\Modules;
+<?php namespace Icebreath;
 
 use Icebreath\Response;
 
