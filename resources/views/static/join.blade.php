@@ -11,7 +11,7 @@
     <h4 style="text-align: left;"><b>Requirements</b></h4>
     
     <ul >
-        <li>You <strong>must</strong> be at least 18 to apply (over 15's but under 18 may apply but it must be discussed with the administration team)</li>
+        <li>You <strong>must</strong> be at least 16, 18+ if purposed show contains explicit content, to apply</li>
         <li>You <strong>must</strong> have a stable and decent internet connection that can handle streaming 320Kbs to the broadcasting server</li>
         <li>You will <strong>need</strong> enough music/content to fill your on air time every session and it must vary</li>
         <li>You <strong>must</strong> have software capable of broadcasting at 320Kbs in MP3 to the Icecast server (we can help you sort this out)</li>
