@@ -7,47 +7,48 @@
 		
 		<title>The Hive Radio - A station by changelings, for everyone!</title>
 		
-		<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
-		<link href="{{URL::to('/')}}/css/unsemantic-grid-responsive.css" type="text/css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Iceberg" rel="stylesheet" type="text/css">
+		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+		<link href="{{URL::to('/')}}/css/960.css" type="text/css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
 	</head>
 	
 	<body>
 		<!-- *** SITE HEADER *** -->
 		<header>
-			<div id="site-header" class="grid-container">
-				<div class="site-logo grid-50">
-					<img src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/logo.png">
+			<div id="site-header" class="container_12">
+				<div class="site-logo grid_6">
+					<img src="{{URL::to('/')}}/img/logo.png">
 				</div>
 			</div>
 		</header>
 		<!-- *** END SITE HEADER *** -->
 		
 		<!-- *** SITE BODY *** -->
-		<div id="site-body" class="grid-container">
+		<div id="site-body" class="container_16">
 			<!-- *** SITE MENU *** -->
-			<div class="site-left-sidebar grid-15 fixed-float">
+			<div class="site-left-sidebar grid_3 fixed-float">
 				<ul class="site-sidebar-ul">
-					<a href="/"><li class="site-sidebar-li {{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
-					<a href="/about"><li class="site-sidebar-li {{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
-					<a href="/b"><li class="site-sidebar-li {{Request::path() == 'b' ? 'active' : ''}}">Blog</li></a>
-					<a href="/staff"><li class="site-sidebar-li {{Request::path() == 'staff' ? 'active' : ''}}">Staff</li></a>
-					<a href="/chat"><li class="site-sidebar-li {{Request::path() == 'chat' ? 'active' : ''}}">Chat</li></a>
-					<a href="/s"><li class="site-sidebar-li {{Request::path() == 'shows' ? 'active' : ''}}">Shows</li></a>
-					<a href="/join"><li class="site-sidebar-li {{Request::path() == 'join' ? 'active' : ''}}">Join Us</li></a>
+					<a href="{{URL::to('/')}}"><li class="{{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
+					<a href="{{URL::to('about')}}"><li class="{{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
+					<a href="{{URL::to('b')}}"><li class="{{Request::path() == 'b' ? 'active' : ''}}">Blog</li></a>
+					<a href="{{URL::to('staff')}}"><li class="{{Request::path() == 'staff' ? 'active' : ''}}">Staff</li></a>
+					<a href="{{URL::to('chat')}}"><li class="{{Request::path() == 'chat' ? 'active' : ''}}">Chat</li></a>
+					<a href="{{URL::to('s')}}"><li class="{{Request::path() == 'shows' ? 'active' : ''}}">Shows</li></a>
+					<a href="{{URL::to('join')}}"><li class="{{Request::path() == 'join' ? 'active' : ''}}">Join Us</li></a>
 				</ul>
 			</div>
 			<!-- *** END SITE MENU *** -->
 			
 			<!-- *** MAIN SITE CONTENT *** -->
-			<div class="site-content grid-55">
+			<div class="site-content grid_10 prefix_3">
 				@yield('content')
 			</div>
 			<!-- *** END MAIN SITE CONTENT *** -->
 			
 			<!-- *** SITE SIDEBAR CONTENT *** -->
-			<div class="site-right-sidebar grid-20 fixed-float">
+			<div class="site-right-sidebar grid_3 fixed-float">
 				<ul class="site-sidebar-ul">
 					
 					@yield('sidebar-items')

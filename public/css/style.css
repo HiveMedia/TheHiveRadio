@@ -21,6 +21,21 @@ a {
     text-align: center;
 }
 
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: 'Iceberg', cursive;
+    color: #7f7;
+    font-weight: 600;
+}
+
+h1 { font-size: 18pt; }
+h2 { font-size: 17pt; }
+h3 { font-size: 16pt; }
+h4 { font-size: 15pt; }
+h5 { font-size: 14pt; }
+h6 { font-size: 13pt; }
+p  { font-size: 10pt; }
+
 header {
 	margin-top: 20px;
 	margin-bottom: 40px;
@@ -54,7 +69,7 @@ header #site-header .site-text {
 #site-body .site-left-sidebar .site-sidebar-ul li {
 	margin: 0px;
 	color: #ccc;
-	font-size: 18px;
+	font-size: 14px;
 	padding: 13px 0px;
 }
 
@@ -66,10 +81,6 @@ header #site-header .site-text {
 #site-body .site-left-sidebar .site-sidebar-ul .active {
 	font-weight: 800;
 	background: rgba(40, 40, 40, 0.8);
-}
-
-#site-body .site-content {
-	margin-left: 20%;
 }
 
 #site-body .site-content .full-content {
@@ -107,7 +118,6 @@ header #site-header .site-text {
 
 #site-body .site-right-sidebar {
 	padding: 0px;
-	margin-left: 75%;
 }
 
 #site-body .site-right-sidebar .site-sidebar-ul {
@@ -121,7 +131,7 @@ header #site-header .site-text {
 	margin: 0px;
 	margin-bottom: 25px;
 	color: #ccc;
-	font-size: 18px;
+	font-size: 14px;
 	padding: 5px 0px 10px 0px;
 	border-top: solid 4px #262;
 	background: rgba(20, 20, 20, 0.8);
