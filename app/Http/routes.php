@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', 'StaticController@home');
-Route::get('/home', 'StaticController@home');
-
-
 /*
  *  Static Pages
  */
+
 // About us page
 Route::get('/about', 'StaticController@aboutus');
 
@@ -30,9 +27,28 @@ Route::get('/staff', 'StaticController@staffus');
 // Chat Page
 Route::get('/chat', 'StaticController@chatus');
 
+
+/*
+ *  Static M3u
+ */
+
+// About us page
+Route::get('/playlist', 'PlaylistController@index');
+Route::get('/playlist/mobile.low.aac.m3u', 'PlaylistController@mla');
+Route::get('/playlist/mobile.med.aac.m3u', 'PlaylistController@mma');
+Route::get('/playlist/normal.mp3.m3u', 'PlaylistController@nm3');
+Route::get('/playlist/normal.aac.m3u', 'PlaylistController@na');
+Route::get('/playlist/high.quality.aac.m3u', 'PlaylistController@aqa');
+
+
 /*
  * Dynamic Coded stuffs
  */
+
+// Main Index
+Route::get('/', 'Blog@home');
+Route::get('/home', 'Blog@home');
+
 // Blog Post
 Route::get('b/{id}', [
 	'as' => 'post', 'uses'=>'Blog@post'

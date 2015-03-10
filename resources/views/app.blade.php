@@ -7,8 +7,8 @@
 		
 		<title>The Hive Radio - A station by changelings, for everyone!</title>
 		
-		<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/unsemantic-grid-responsive.css" type="text/css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
 	</head>
@@ -18,7 +18,7 @@
 		<header>
 			<div id="site-header" class="grid-container">
 				<div class="site-logo grid-50">
-					<img src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/logo.png">
+					<img src="/img/logo-full.png">
 				</div>
 			</div>
 		</header>
@@ -30,11 +30,12 @@
 			<div class="site-left-sidebar grid-15 fixed-float">
 				<ul class="site-sidebar-ul">
 					<a href="/"><li class="site-sidebar-li {{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
+                    @if( \Auth::guest() ==false )<a href="/admin"><li class="site-sidebar-li {{Request::path() == 'admin' ? 'active' : ''}}">Admin Us</li></a>@endif
 					<a href="/about"><li class="site-sidebar-li {{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
 					<a href="/b"><li class="site-sidebar-li {{Request::path() == 'b' ? 'active' : ''}}">Blog</li></a>
 					<a href="/staff"><li class="site-sidebar-li {{Request::path() == 'staff' ? 'active' : ''}}">Staff</li></a>
 					<a href="/chat"><li class="site-sidebar-li {{Request::path() == 'chat' ? 'active' : ''}}">Chat</li></a>
-					<a href="/s"><li class="site-sidebar-li {{Request::path() == 'shows' ? 'active' : ''}}">Shows</li></a>
+				<!--	<a href="/s"><li class="site-sidebar-li {{Request::path() == 'shows' ? 'active' : ''}}">Shows</li></a> -->
 					<a href="/join"><li class="site-sidebar-li {{Request::path() == 'join' ? 'active' : ''}}">Join Us</li></a>
 				</ul>
 			</div>
@@ -82,12 +83,7 @@
 			<p class="third">
 				<img height="40" src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/by-nc-nd.eu.png"> 
 				<img src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/comodo_secure_100x85_transp.png"> 
-				<a href="http://www.internet-radio.com/" target="_blank">
-					<img src="http://www.internet-radio.com/images/internet-radio-badge.gif">
-				</a> 
-				<a href="http://www.streamfinder.com" target="_blank">
-					<img src="http://www.streamfinder.com/images/streamfinder-icon.gif" border="0" alt="StreamFinder - the free place to list your streaming show.">
-				</a>
+
 			</p>
 			<p class="third">
 				<img width="250px"src="http://hivemedia.net.au/images/logo.png">

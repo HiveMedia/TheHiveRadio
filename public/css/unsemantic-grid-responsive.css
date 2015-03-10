@@ -85,7 +85,8 @@
 .grid-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+    /* Kyle HAck job to fix fuck up */
+ /* max-width: 1200px;*/
   padding-left: 10px;
   padding-right: 10px;
 }

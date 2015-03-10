@@ -28,4 +28,25 @@ class Blog extends Controller {
         $postdata = Posts::all()->sortByDesc('id')->where('public','=',false);
         return view('blog.posts')->with('postsdata',$postdata->toArray());
     }
+
+
+    public function home ()
+    {
+
+        $postsdata = Posts::all()->sortByDesc('id')->where('public', '=', false);
+        $count = $postsdata->count();
+        $postsdata = $postsdata->toArray();
+
+        $postsdat = array();
+        for ($x = 0; $x <= 2; $x++) {
+            $now = $count - $x;
+            if (isset($postsdata[$now])) {
+                $postsdat[$x] = $postsdata[$now];
+            }
+        }
+
+        return view('blog.home')->with('postsdata',$postsdat);
+
+
+    }
 }

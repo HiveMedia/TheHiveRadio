@@ -176,3 +176,14 @@ footer .third .site-with-love {
 	width: 125%;
 	opacity: 0.5;
 }
+
+.home-blog {
+border: double;
+}
+.blog-title {
+    color: #4c4;
+    font-size: 24px;
+    font-weight: bold;
+    align-self: center;
+
+}
