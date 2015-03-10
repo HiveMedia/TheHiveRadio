@@ -23,7 +23,8 @@ Route::get('/join', 'StaticController@joinus');
 
 // Staff Page
 Route::get('/staff', 'StaticController@staffus');
-
+// Lol Jokes EFN
+Route::get('/uefi', 'StaticController@staffus');
 // Chat Page
 Route::get('/chat', 'StaticController@chatus');
 
