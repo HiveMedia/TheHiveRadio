@@ -1,23 +1,34 @@
-## Laravel PHP Framework
+# The Hive Radio Website
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+![The Hive Radio](public/img/logo.png?raw=true)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+This repo is a copy of [The Hive Radios][1] website, here you can see how it works and even submit pull requests for new features or bug fixes!
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Version
 
-## Official Documentation
+'0.1.0'
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## License
 
-## Contributing
+Copyright 2015 Hive Media Productions <development@hivemedia.net.au>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-### License
+    http://www.apache.org/licenses/LICENSE-2.0
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+#### Laravel License
+
+The Laravel framework (on which The Hive Radio is designed upon) is open-sourced software licensed under the [MIT license][2] and can be found at [laravel/laravel][3]
+
+
+[1]: https://hiveradio.net
+[2]: http://opensource.org/licenses/MIT
+[3]: https://github.com/laravel/laravel
