@@ -1,4 +1,7 @@
 .c9/
 .idea/
-/vendors
+vendor/
 .env
+*.lock
+*.swp
+*.phar
