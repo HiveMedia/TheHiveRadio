@@ -4,3 +4,4 @@ vendor/
 .env
 *.lock
 *.swp
+*.phar
