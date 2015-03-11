@@ -2,5 +2,5 @@
 .idea/
 vendor/
 .env
-.lock
-.swp
+*.lock
+*.swp
