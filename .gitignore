@@ -4,3 +4,8 @@
 .env
 /resources/assets/GoogleAPI.p12
 vendor/
+.env
+*.lock
+*.swp
+*.phar
+
