@@ -2,11 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Posts;
+use App\RadioShows;
 
 use Request;
 
-class BlogAdminController extends Controller {
+class ShowAdminController extends Controller {
 
     public function __construct()
     {
@@ -15,29 +15,31 @@ class BlogAdminController extends Controller {
 
     public function index()
     {
-        $postsdata = Posts::all();
-        return view('admin.blog.index')->with('postsdata', $postsdata->toArray());
+        $postsdata = RadioShows::all();
+        return view('admin.show.index')->with('postsdata', $postsdata->toArray());
     }
 
 
     public function edit($id)
     {
-        $postdata = Posts::find($id);
-        return view('admin.blog.edit')->with('postdata', $postdata->toArray());
+        $postdata = RadioShows::find($id);
+        return view('admin.show.edit')->with('postdata', $postdata->toArray());
     }
     public function update($id)
     {
         $input = Request::all();
-        $post = Posts::findOrNew($id);
+        $post = RadioShows::findOrNew($id);
 
         $post->title = $input['title'];
-        $post->body = $input['body'];
+        $post->description = $input['description'];
+        $post->description_short = $input['description_short'];
         if (isset($input['public'])) {
             $post->public = $input['public'];
         } else {
             $post->public = false;
         }
-        $post->image_url = $input['image_url'];
+        $post->icon_url = $input['icon_url'];
+        $post->banner_url = $input['banner_url'];
 
         $post->save();
         return view('admin.success');
@@ -45,21 +47,21 @@ class BlogAdminController extends Controller {
 
     public function create()
     {
-        return view('admin.blog.create');
+        return view('admin.show.create');
     }
-    public function createPost()
+    public function createShow()
     {
         $input = Request::all();
 
         $input['poster_id'] = \Auth::user()->id;
      //   dd($input);
-        Posts::create($input);
+        RadioShows::create($input);
         return view('admin.success');
     }
 
     public function togpublivity($id)
     {
-        $post = Posts::find($id);
+        $post = RadioShows::find($id);
             if ($post->public=='1')
             {
                 $post->public=false;
@@ -72,13 +74,13 @@ class BlogAdminController extends Controller {
 
     public function delete($id)
     {
-        $postdata = Posts::find($id);
-        return view('admin.blog.delete')->with('postdata',$postdata->toArray());
+        $postdata = RadioShows::find($id);
+        return view('admin.show.delete')->with('postdata',$postdata->toArray());
     }
 
-    public function DeletePost($id)
+    public function DeleteShow($id)
     {
-        $post = Posts::find($id);
+        $post = RadioShows::find($id);
         $post->delete($id);
 
         return view('admin.success');

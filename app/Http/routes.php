@@ -156,8 +156,18 @@ Route::get('admin/s/l', [
 
 
 
+/*
+ *  Scheduling
+ */
+// Book a Slot
+Route::get('admin/time/c', [
+    'uses'=>'Admin\ScheduleAdminController@create'
+]);
 
-
+// List All Bookings
+Route::get('admin/time/l', [
+    'uses'=>'Admin\ScheduleAdminController@index'
+]);
 
 
 Route::controllers([

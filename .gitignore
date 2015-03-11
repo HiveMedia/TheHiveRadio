@@ -2,3 +2,4 @@
 .idea/
 /vendors
 .env
+/resources/assets/GoogleAPI.p12

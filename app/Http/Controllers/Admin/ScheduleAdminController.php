@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\RadioShows;
 use App\RadioSchedule;
+use App\Services\GoogleCalendar;
 
 use Request;
 
@@ -16,7 +17,13 @@ class ScheduleAdminController extends Controller {
 
     public function index()
     {
-        
+        $calendar = new GoogleCalendar();
+        $calendarId = "thehiveradioaus@gmail.com";
+        $result = $calendar->get($calendarId);
+        dd($result);
+        $shows = RadioShows::all();
+        return view('admin.schedule.index')->with('showsdata', $shows->toArray());
+
     }
 
 
