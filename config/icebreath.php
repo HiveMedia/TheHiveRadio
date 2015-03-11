@@ -73,6 +73,22 @@ return [
          */
 
         'location' => env('ICECAST_LOCATION'),
+
+        /*
+         |-----------------------------------------------------
+         | Custom Stream Base URL
+         |-----------------------------------------------------
+         |
+         | For replacing the base URL for for stream_url, the
+         | module shall replace the stream_url with the custom
+         | built with URL based on the custom URL and mount point
+         |
+         | Set this option to null to disable the feature
+         |
+         */
+
+        'custom_stream_url_base' => 'https://hiveradio.net/mounts',
+        
     ],
 
     /*

@@ -180,7 +180,12 @@ class Icecast extends Module {
             $stream->stream_listeners_peak = (int)$mount_point->listener_peak;
             $stream->stream_listeners_max = ($mount_point->max_listeners == "unlimited" ? -1 : (int)$mount_point->max_listeners);
             $stream->stream_listeners_unique = $unique_listeners;
-            $stream->stream_url = (string)$mount_point->listenurl;
+
+            if(\Config::get('icebreath.icecast.custom_stream_url_base') != null) {
+                $stream->stream_url = \Config::get('icebreath.icecast.custom_stream_url_base') . $stream->stream_name;
+            } else {
+                $stream->stream_url = (string)$mount_point->listenurl;
+            }
 
             $stream->stream_nowplaying = new NowPlayingStruct();
             $stream->stream_nowplaying->text = (string)$mount_point->title;
