@@ -15,7 +15,7 @@ class Response {
     private $output  = null;
 
     // Array of headers to be used when making the response
-    private $headers = [];
+    private $headers = array();
 
     // Response type, defaults to JSON
     private $type    = null;
@@ -28,13 +28,13 @@ class Response {
      * @param null $error
      * @param array $headers
      */
-    public function __construct($output, $code=200, $error=null, $headers=[], $type="application/json") {
+    public function __construct($output, $code=200, $error=null, $headers=array(), $type="application/json") {
         $this->output = $output;
         $this->code = $code;
         $this->headers = $headers;
 
         $this->type = $type;
-        $this->headers['Content-type'] = $this->type;
+        $this->headers["Content-type"] = $this->type;
 
         if(isset($error)) {
             $this->errored = true;

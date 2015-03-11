@@ -75,4 +75,47 @@ return [
         'location' => env('ICECAST_LOCATION'),
     ],
 
+    /*
+     |---------------------------------------------------------
+     | The Hive Radio's Cover API
+     |---------------------------------------------------------
+     |
+     | These are the settings for The Hive Radio's Youtube Cover
+     | API, e.g. Youtube API key, not found image, cache timeout, etc.
+     |
+     */
+    'covers' => [
+
+        /*
+         |-----------------------------------------------------
+         | Youtube API Key
+         |-----------------------------------------------------
+         |
+         | Google/Youtube API key used to pull youtube cover images
+         |
+         */
+        'youtube_api_key' => env('COVERS_API_KEY'),
+
+        /*
+         |-----------------------------------------------------
+         | Cover Not Found Image
+         |-----------------------------------------------------
+         |
+         | Image used when a cover is not found
+         |
+         */
+        'not_found_img' => env('COVERS_NF_IMG'),
+
+        /*
+         |-----------------------------------------------------
+         | Cover Cache Time
+         |-----------------------------------------------------
+         |
+         | How long to hold onto a cover image before getting
+         | a new copy
+         |
+         */
+        'cache_time' => env('COVERS_CACHE_TIME'),
+    ],
+
 ];

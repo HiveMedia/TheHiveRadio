@@ -46,28 +46,26 @@ class IcebreathController extends Controller {
 
         if($resp->hasErrored()) {
             return response(
-                            array('status' => 'error', 'error' => $resp->getError(), 'timestamp' => time()),
-                            $resp->getHTTPCode()
+                array('status' => 'error', 'error' => $resp->getError(), 'timestamp' => time()),
+                $resp->getHTTPCode()
             );
         } else {
             $builtResp = null;
 
             if($resp->getResponseType() == "application/json") {
-                $builtResp = new Response(
+                $builtResp = response(
                     array('status' => 'successful', 'response' => $resp->getOutput(), 'timestamp' => time()),
                     $resp->getHTTPCode()
                 );
-
-
             } else {
-                $builtResp = new Response(
+                $builtResp = response(
                     $resp->getOutput(),
                     $resp->getHTTPCode()
                 );
             }
 
-            foreach($resp->getHeaders() as $key => $pair) {
-                $builtResp->header($key, value);
+            foreach($resp->getHeaders() as $key => $value) {
+                $builtResp->header($key, $value);
             }
 
             return $builtResp;
