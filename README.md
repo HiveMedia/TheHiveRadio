@@ -2,14 +2,15 @@
 
 ![The Hive Radio](public/img/logo.png?raw=true)
 
-This repo is a copy of [The Hive Radios][1] website, here you can see how it works and even submit pull requests for new features or bug fixes!
+This repo is a copy of [The Hive Radio's][1] website, here you can see how it works and even submit pull requests for new features or bug fixes!
 
 ## Version
 
 '0.1.0'
 
-## License
+## Licenses
 
+### The Hive Radio License
 Copyright 2015 Hive Media Productions <development@hivemedia.net.au>
 
 Licensed under the Apache License, Version 2.0 (the "License");
