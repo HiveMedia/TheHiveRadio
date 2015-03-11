@@ -10,7 +10,7 @@ This repo is a copy of [The Hive Radio's][1] website, here you can see how it wo
 
 ## Licenses
 
-### The Hive Radio License
+#### Website License
 Copyright 2015 Hive Media Productions <development@hivemedia.net.au>
 
 Licensed under the Apache License, Version 2.0 (the "License");
