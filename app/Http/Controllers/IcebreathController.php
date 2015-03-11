@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
+
 class IcebreathController extends Controller {
 
     private $VERSION = "0.1.0";
@@ -48,10 +50,27 @@ class IcebreathController extends Controller {
                             $resp->getHTTPCode()
             );
         } else {
-            return response(
-                            array('status' => 'successful', 'response' => $resp->getOutput(), 'timestamp' => time()),
-                            $resp->getHTTPCode()
-            );
+            $builtResp = null;
+
+            if($resp->getResponseType() == "application/json") {
+                $builtResp = new Response(
+                    array('status' => 'successful', 'response' => $resp->getOutput(), 'timestamp' => time()),
+                    $resp->getHTTPCode()
+                );
+
+
+            } else {
+                $builtResp = new Response(
+                    $resp->getOutput(),
+                    $resp->getHTTPCode()
+                );
+            }
+
+            foreach($resp->getHeaders() as $key => $pair) {
+                $builtResp->header($key, value);
+            }
+
+            return $builtResp;
         }
     }
 

@@ -1,7 +1,5 @@
 <?php namespace Icebreath;
 
-use Icebreath\Response;
-
 abstract class Module {
 
     /**
@@ -12,22 +10,23 @@ abstract class Module {
      * @param $method
      * @return Response
      */
-    public function getModuleResponse($view, $args, $method) {
+    public function getModuleResponse($view, $args, $method)
+    {
         $resp = null;
 
-        if($method == "PUT") {
+        if ($method == "PUT") {
             $resp = $this->handlePut($view, $args);
-        } else if($method == "GET") {
+        } else if ($method == "GET") {
             $resp = $this->handleGet($view, $args);
-        } else if($method == "POST") {
+        } else if ($method == "POST") {
             $resp = $this->handlePost($view, $args);
-        } else if($method == "DELETE") {
+        } else if ($method == "DELETE") {
             $resp = $this->handleDelete($view, $args);
         } else {
             $resp = new Response(null, $code = 400, $error = "Icebreath doesn't support the HTTP method [$method]");
         }
 
-        if(!isset($resp)) {
+        if (!isset($resp)) {
             return new Response(null, $code = 500, $error = "The module didn't supply a response for view [$view] via [$method]");
         } else {
             return $resp;
