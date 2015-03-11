@@ -87,8 +87,24 @@ return [
          |
          */
 
-        'custom_stream_url_base' => 'https://hiveradio.net/mounts',
-        
+        'custom_stream_url_base' => 'https://hiveradio.net',
+
+        /*
+         |----------------------------------------------------
+         | Mount Point Ignore
+         |----------------------------------------------------
+         |
+         | An array of mount points to be ignored when returning data
+         |
+         | NOTE: This stops the mount point from be drilled down to
+         |
+         */
+
+        'mount_point_ignore' => [
+
+            '/source'
+
+        ],
     ],
 
     /*

@@ -122,7 +122,7 @@ class Icecast extends Module {
         try {
             $data = $this->getDataFromServer($this->getServerURL("/admin/stats"));
         } catch(\RuntimeException $ex) {
-            return new Response(null, $code = 500, $ex->getMessage());
+            return new Response(null, 500, $ex->getMessage());
         }
 
         $data = new \SimpleXMLElement($data);
@@ -146,6 +146,17 @@ class Icecast extends Module {
                 $server_data->server_listeners_max += (int)$mount_point->max_listeners;
             $unique_listeners = $this->getUniqueListenersOnMount((string)$mount_point["mount"]);
             $server_data->server_listeners_unique += $unique_listeners;
+
+            $ignore_this_mount = false;
+            foreach(\Config::get('icebreath.icecast.mount_point_ignore') as $id => $ignore_mount) {
+                if((string)$mount_point["mount"] == $ignore_mount) {
+                    $ignore_this_mount = true;
+                }
+            }
+
+            if($ignore_this_mount) {
+                continue;
+            }
 
             if(!empty($mount_point_name) && str_replace('/', '', $mount_point["mount"]) != $mount_point_name)
                 continue;
