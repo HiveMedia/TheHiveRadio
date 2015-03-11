@@ -31,7 +31,8 @@
 			<div class="site-left-sidebar grid_3 fixed-float">
 				<ul class="site-sidebar-ul">
 					<a href="{{URL::to('/')}}"><li class="{{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
-					<a href="{{URL::to('about')}}"><li class="{{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
+                    @if( \Auth::guest() ==false )<a href="/admin"><li class="site-sidebar-li {{Request::path() == 'admin' ? 'active' : ''}}">Admin Us</li></a>@endif
+                    <a href="{{URL::to('about')}}"><li class="{{Request::path() == 'about' ? 'active' : ''}}">About Us</li></a>
 					<a href="{{URL::to('b')}}"><li class="{{Request::path() == 'b' ? 'active' : ''}}">Blog</li></a>
 					<a href="{{URL::to('staff')}}"><li class="{{Request::path() == 'staff' ? 'active' : ''}}">Staff</li></a>
 					<a href="{{URL::to('chat')}}"><li class="{{Request::path() == 'chat' ? 'active' : ''}}">Chat</li></a>
