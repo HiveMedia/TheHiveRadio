@@ -83,11 +83,14 @@ Route::get('s/{id}', [
 Route::get('admin', [
     'uses'=>'Admin\AdminController@index'
 ]);
-
+/*
+ *    BLOG ADMIN
+ */
 // Create Blog Posts
 Route::get('admin/b/c', [
     'uses'=>'Admin\BlogAdminController@create'
 ]);
+// Edit Blog Posts
 Route::get('admin/b/e/{id}', [
     'uses'=>'Admin\BlogAdminController@edit'
 ])->where('id','[0-9]+');
@@ -95,27 +98,66 @@ Route::get('admin/b/e/{id}', [
 Route::post('admin/b/e/{id}', [
     'uses'=>'Admin\BlogAdminController@update'
 ])->where('id','[0-9]+');
-
+// Change Publicity
 Route::get('admin/b/h/{id}', [
     'uses'=>'Admin\BlogAdminController@togpublivity'
 ])->where('id','[0-9]+');
-
+// Create Blog Post
 Route::post('admin/b/c', [
     'uses'=>'Admin\BlogAdminController@createPost'
 ]);
+// Delete Blog Post
 Route::get('admin/b/d/{id}', [
     'uses'=>'Admin\BlogAdminController@delete'
 ])->where('id','[0-9]+');
 Route::get('admin/b/dc/{id}', [
     'uses'=>'Admin\BlogAdminController@DeletePost'
 ])->where('id','[0-9]+');
-
-
-
-
+// List All Blog Posts
 Route::get('admin/b/l', [
     'uses'=>'Admin\BlogAdminController@index'
 ]);
+
+/*
+ *  SHOW ADMIN
+ */
+
+// Create Show
+Route::get('admin/s/c', [
+    'uses'=>'Admin\ShowAdminController@create'
+]);
+// Edit Show
+Route::get('admin/s/e/{id}', [
+    'uses'=>'Admin\ShowAdminController@edit'
+])->where('id','[0-9]+');
+
+Route::post('admin/s/e/{id}', [
+    'uses'=>'Admin\ShowAdminController@update'
+])->where('id','[0-9]+');
+// Change Publicity
+Route::get('admin/s/h/{id}', [
+    'uses'=>'Admin\ShowAdminController@togpublivity'
+])->where('id','[0-9]+');
+// Create Show
+Route::post('admin/s/c', [
+    'uses'=>'Admin\ShowAdminController@createShow'
+]);
+// Delete Show
+Route::get('admin/s/d/{id}', [
+    'uses'=>'Admin\ShowAdminController@delete'
+])->where('id','[0-9]+');
+Route::get('admin/s/dc/{id}', [
+    'uses'=>'Admin\ShowAdminController@DeleteShow'
+])->where('id','[0-9]+');
+// List All Show
+Route::get('admin/s/l', [
+    'uses'=>'Admin\ShowAdminController@index'
+]);
+
+
+
+
+
 
 
 Route::controllers([

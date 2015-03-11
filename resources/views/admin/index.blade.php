@@ -12,6 +12,14 @@
                     </div>
 
 
+        <h2>Shows</h2>
+        <div class="panel-body">
+            <ul>
+                <li><a href="admin/s/c">Create Show</a></li>
+                <li>{!! Html::Link('admin/s/l','List ShowS') !!}</li>
+            </ul>
+        </div>
+
 
     </div>
 @endsection

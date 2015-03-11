@@ -11,6 +11,8 @@ class Posts extends Model {
         'subject',
         'image_url',
         'public',
+        'poster_id',
+
     ];
 
     protected $table = 'posts';

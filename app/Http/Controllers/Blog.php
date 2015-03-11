@@ -43,7 +43,13 @@ class Blog extends Controller {
             $now = $count - $x;
             if (isset($postsdata[$now])) {
                 $postsdat[$x] = $postsdata[$now];
-                $postsdat[$x]['poster_name'] = User::find($postsdat[$x]['poster_id'])->name;
+                $poster = User::find($postsdat[$x]['poster_id']);
+
+                if (isset($poster)) {
+                    $postsdat[$x]['poster_name'] = User::find($postsdat[$x]['poster_id'])->name;
+                } else {
+                    return 'INTERNAL ERROR: 1';
+                }
             }
         }
 
