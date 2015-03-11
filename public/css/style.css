@@ -1,3 +1,7 @@
+/********************************************************************
+ *******                    Global Styling                   ********
+ ********************************************************************/
+
 html, body {
 	margin: 0px;
 	font-family: 'Noto Sans', sans-serif;
@@ -36,6 +40,11 @@ h5 { font-size: 14pt; }
 h6 { font-size: 13pt; }
 p  { font-size: 10pt; }
 
+
+/********************************************************************
+ *******                      Site Header                    ********
+ ********************************************************************/
+
 header {
 	margin-top: 20px;
 	margin-bottom: 40px;
@@ -48,6 +57,11 @@ header img {
 header #site-header .site-text {
 	margin-top: 18px;
 }
+
+
+/********************************************************************
+ *******                   Site Sidebar Left                 ********
+ ********************************************************************/
 
 #site-body .fixed-float {
     position: fixed;
@@ -83,6 +97,10 @@ header #site-header .site-text {
 	background: rgba(40, 40, 40, 0.8);
 }
 
+/********************************************************************
+ *******                  Main Site Content                  ********
+ ********************************************************************/
+
 #site-body .site-content .full-content {
     color: #e0e0e0;
     margin: 0% 0%;
@@ -90,6 +108,9 @@ header #site-header .site-text {
     border-top: solid 4px #262;
     background: rgba(20, 20, 20, 0.8);
 }
+
+
+/** /staffus **/
 
 #site-body .site-content .site-staff .staff-item {
 	border: none;
@@ -115,6 +136,35 @@ header #site-header .site-text {
     margin-top: -15px;
     float: left;
 }
+
+
+/** /home & /b **/
+
+#site-body .site-content .site-blog .site-blog-post .blog-post-img {
+    max-width: 100%;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#site-body .site-content .site-blog .site-blog-post .blog-post-content {
+    margin-top: -4px;
+    border-top: solid #2a2 4px;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 5px 15px 15px 15px;
+}
+
+#site-body .site-content .site-blog .site-blog-post .blog-post-posted {
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+#site-body .site-content .site-blog .site-blog-post .blog-post-body {
+    color: #fff;
+}
+
+/********************************************************************
+ *******                  Site Sidebar Right                 ********
+ ********************************************************************/
 
 #site-body .site-right-sidebar {
 	padding: 0px;
@@ -148,6 +198,10 @@ header #site-header .site-text {
 #site-body .site-right-sidebar .site-sidebar-ul .site-socal .fa-google-plus-square { color: #B71C1C; }
 
 
+/********************************************************************
+ *******                    Site Footer                      ********
+ ********************************************************************/
+
 footer {
 	border-top: solid 3px #262;
 	background: rgba(20, 20, 20, 0.8);
@@ -173,6 +227,10 @@ footer .third .site-with-love {
 	color: #f00;
 }
 
+/********************************************************************
+ *******                  Site Background                    ********
+ ********************************************************************/
+
 #site-background {
 	top: 0em;
 	position: fixed;
@@ -185,15 +243,4 @@ footer .third .site-with-love {
 	vertical-align: middle;
 	width: 125%;
 	opacity: 0.5;
-}
-
-.home-blog {
-border: double;
-}
-.blog-title {
-    color: #4c4;
-    font-size: 24px;
-    font-weight: bold;
-    align-self: center;
-
 }

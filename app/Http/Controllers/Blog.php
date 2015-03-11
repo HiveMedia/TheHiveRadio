@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Posts;
+use App\User;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -42,6 +43,7 @@ class Blog extends Controller {
             $now = $count - $x;
             if (isset($postsdata[$now])) {
                 $postsdat[$x] = $postsdata[$now];
+                $postsdat[$x]['poster_name'] = User::find($postsdat[$x]['poster_id'])->name;
             }
         }
 
