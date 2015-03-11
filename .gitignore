@@ -3,3 +3,4 @@
 /vendors
 .env
 /resources/assets/GoogleAPI.p12
+vendor/
