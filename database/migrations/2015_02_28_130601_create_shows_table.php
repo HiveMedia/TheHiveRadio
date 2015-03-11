@@ -36,7 +36,6 @@ class CreateShowsTable extends Migration {
 	public function down()
 	{
 		Schema::drop('shows');
-        Schema::drop('schedule');
 	}
 
 }

@@ -10,7 +10,9 @@ class RadioShows extends Model {
     protected $fillable = [
         'title',
         'description',
-        'image_url',
+        'description_short',
+        'icon_url',
+        'banner_url',
         'public',
     ];
 
