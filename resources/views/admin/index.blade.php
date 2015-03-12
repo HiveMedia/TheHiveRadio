@@ -1,44 +1,28 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-        <div class="panel-heading">Our Admin Panel</div>
-
-        <h2>Blog</h2>
-
-        <div class="panel-body">
-            <ul>
-                <li><a href="admin/b/c">Create Post</a></li>
-                <li>{!! Html::Link('admin/b/l','List PostS') !!}</li>
-            </ul>
-        </div>
+    <div class="full-content site-dashboard">
+        <h1 style="text-align: center;">Admin Dashboard</h1>
+        <hr>
 
 
-        <h2>Shows</h2>
+        <h4>Blog</h4>
 
-        <div class="panel-body">
-            <ul>
-                <li><a href="admin/s/c">Create Show</a></li>
-                <li>{!! Html::Link('admin/s/l','List ShowS') !!}</li>
-            </ul>
-        </div>
+        <p><a href="{{ URL::to('admin/b/c') }}">Create Post</a></p>
+        <p><a href="{{ URL::to('admin/b/l') }}">List Posts</a></p>
+        <hr>
 
+        <h4>Shows</h4>
 
-        <h2>Schedule</h2>
+        <p><a href="{{ URL::to('admin/s/c') }}">Create Show</a></p>
+        <p><a href="{{ URL::to('admin/s/l') }}">List Shows</a></p>
+        <p><a href="{{ URL::to('admin/time/c') }}">Book Show</a></p>
+        <p><a href="{{ URL::to('admin/time/l') }}">Show Schedule</a></p>
+        <hr>
 
-        <div class="panel-body">
-            <ul>
-                <li><a href="admin/time/c">Book a Show</a></li>
-                <li>{!! Html::Link('admin/time/l','List Schedule') !!}</li>
-            </ul>
-        </div>
+        <h4>Users</h4>
 
-        <h2>Users</h2>
-
-        <div class="panel-body">
-            <ul>
-                <li>{!! Html::Link('admin/u/l','List Users') !!}</li>
-            </ul>
-        </div>
+        <p><a href="{{ URL::to('admin/u/l') }}">List Users</a></p>
+        <hr>
     </div>
 @endsection
