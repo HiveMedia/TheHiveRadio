@@ -104,7 +104,7 @@ header #site-header .site-text {
 #site-body .site-content .full-content {
     color: #e0e0e0;
     margin: 0% 0%;
-    padding: 15px 25px;
+    padding: 5px 25px 35px 25px;
     border-top: solid 4px #262;
     background: rgba(20, 20, 20, 0.8);
 }
@@ -160,6 +160,23 @@ header #site-header .site-text {
 
 #site-body .site-content .site-blog .site-blog-post .blog-post-body {
     color: #fff;
+}
+
+
+/*** /auth/login ***/
+
+#site-body .site-content .site-login .site-login-errors {
+    margin-bottom: 50px;
+}
+
+#site-body .site-content .site-login .site-login-errors .login-errors-title {
+    color: #f77;
+    margin-bottom: 0px;
+}
+
+
+#site-body .site-content .site-login .site-login-form input {
+    margin-bottom: 10px;
 }
 
 /********************************************************************

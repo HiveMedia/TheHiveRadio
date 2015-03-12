@@ -1,63 +1,33 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+    <div class="full-content site-login header-center text-center">
+        <h1>User Login</h1>
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/login">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+        @if(count($errors) > 0)
+            <div class="site-login-errors">
+                <h3 class="login-errors-title">Oops! Bad login!</h3>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+                @foreach($errors->all() as $error)
+                    <p class="login-errors-error">{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+        <form class="site-login-form" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
+            <label class="login-form-label" for="email">E-Mail Address</label>
+            <input type="email" id="email" name="email" class="login-form-email" value="{{ old('email') }}">
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-									Login
-								</button>
+            <br>
 
-								<a href="/password/email">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+            <label class="login-form-label" for="password">Password</label>
+            <input type="password" id="password" name="password" class="login-form-password">
+
+            <br>
+
+            <button type="submit" class="login-form-submit">Login</button>
+        </form>
+    </div>
 @endsection
