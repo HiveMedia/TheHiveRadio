@@ -6,7 +6,8 @@ use App\Posts;
 
 use Request;
 
-class BlogAdminController extends Controller {
+class BlogAdminController extends Controller
+{
 
     public function __construct()
     {
@@ -15,72 +16,111 @@ class BlogAdminController extends Controller {
 
     public function index()
     {
-        $postsdata = Posts::all();
-        return view('admin.blog.index')->with('postsdata', $postsdata->toArray());
+        if (\Auth::user()->IsRole('Editor')) {
+            $postsdata = Posts::all();
+            return view('admin.blog.index')->with('postsdata', $postsdata->toArray());
+        } else {
+            return '403 Permission Denied';
+        }
     }
 
 
     public function edit($id)
     {
-        $postdata = Posts::find($id);
-        return view('admin.blog.edit')->with('postdata', $postdata->toArray());
+        if (\Auth::user()->IsRole('Editor')) {
+            $postdata = Posts::find($id);
+            return view('admin.blog.edit')->with('postdata', $postdata->toArray());
+        } else {
+            return '403 Permission Denied';
+        }
     }
+
     public function update($id)
     {
-        $input = Request::all();
-        $post = Posts::findOrNew($id);
+        if (\Auth::user()->IsRole('Editor')) {
 
-        $post->title = $input['title'];
-        $post->body = $input['body'];
-        if (isset($input['public'])) {
-            $post->public = $input['public'];
+            $input = Request::all();
+            $post = Posts::findOrNew($id);
+
+            $post->title = $input['title'];
+            $post->body = $input['body'];
+            if (isset($input['public'])) {
+                $post->public = $input['public'];
+            } else {
+                $post->public = false;
+            }
+            $post->image_url = $input['image_url'];
+
+            $post->save();
+            return view('admin.success');
         } else {
-            $post->public = false;
+            return '403 Permission Denied';
         }
-        $post->image_url = $input['image_url'];
-
-        $post->save();
-        return view('admin.success');
     }
 
     public function create()
     {
-        return view('admin.blog.create');
+        if (\Auth::user()->IsRole('Editor')) {
+
+            return view('admin.blog.create');
+        } else {
+            return '403 Permission Denied';
+        }
     }
+
     public function createPost()
     {
-        $input = Request::all();
+        if (\Auth::user()->IsRole('Editor')) {
 
-        $input['poster_id'] = \Auth::user()->id;
-     //   dd($input);
-        Posts::create($input);
-        return view('admin.success');
+            $input = Request::all();
+
+            $input['poster_id'] = \Auth::user()->id;
+            //   dd($input);
+            Posts::create($input);
+            return view('admin.success');
+        } else {
+            return '403 Permission Denied';
+        }
     }
 
     public function togpublivity($id)
     {
-        $post = Posts::find($id);
-            if ($post->public=='1')
-            {
-                $post->public=false;
+        if (\Auth::user()->IsRole('Editor')) {
+
+            $post = Posts::find($id);
+            if ($post->public == '1') {
+                $post->public = false;
             } else {
-                $post->public=true;
+                $post->public = true;
             }
-        $post->save();
-        return view('admin.success');
+            $post->save();
+            return view('admin.success');
+        } else {
+            return '403 Permission Denied';
+        }
     }
 
     public function delete($id)
     {
-        $postdata = Posts::find($id);
-        return view('admin.blog.delete')->with('postdata',$postdata->toArray());
+        if (\Auth::user()->IsRole('Editor')) {
+
+            $postdata = Posts::find($id);
+            return view('admin.blog.delete')->with('postdata', $postdata->toArray());
+        } else {
+            return '403 Permission Denied';
+        }
     }
 
     public function DeletePost($id)
     {
-        $post = Posts::find($id);
-        $post->delete($id);
+        if (\Auth::user()->IsRole('Editor')) {
 
-        return view('admin.success');
+            $post = Posts::find($id);
+            $post->delete($id);
+
+            return view('admin.success');
+        } else {
+            return '403 Permission Denied';
+        }
     }
 }
