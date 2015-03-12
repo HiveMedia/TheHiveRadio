@@ -174,8 +174,23 @@ header #site-header .site-text {
     margin-bottom: 0px;
 }
 
-
 #site-body .site-content .site-login .site-login-form input {
+    margin-bottom: 10px;
+}
+
+
+/*** /auth/register ***/
+
+#site-body .site-content .site-register .site-register-errors {
+    margin-bottom: 50px;
+}
+
+#site-body .site-content .site-register .site-register-errors .register-errors-title {
+    color: #f77;
+    margin-bottom: 0px;
+}
+
+#site-body .site-content .site-register .site-register-form input {
     margin-bottom: 10px;
 }
 
