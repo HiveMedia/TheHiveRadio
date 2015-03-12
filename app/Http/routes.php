@@ -52,70 +52,86 @@ Route::get('/home', 'Blog@home');
 
 // Blog Post
 Route::get('b/{id}', [
-	'as' => 'post', 'uses'=>'Blog@post'
-	])->where('id','[0-9]+');
+    'as' => 'post', 'uses' => 'Blog@post'
+])->where('id', '[0-9]+');
 
 
 // Blog Pages
 Route::get('b', [
-    'uses'=>'Blog@pageone'
+    'uses' => 'Blog@pageone'
 ]);
 Route::get('b/page/', [
-    'as' => 'blogpageone', 'uses'=>'Blog@pageone'
+    'as' => 'blogpageone', 'uses' => 'Blog@pageone'
 ]);
 
 Route::get('b/page/{id}', [
-    'as' => 'blogpage', 'uses'=>'Blog@page'
-])->where('id','[0-9]+');
+    'as' => 'blogpage', 'uses' => 'Blog@page'
+])->where('id', '[0-9]+');
 
 // Shows
 Route::get('s', [
-    'uses'=>'ShowsController@index'
+    'uses' => 'ShowsController@index'
 ]);
 
 Route::get('s/{id}', [
-    'as' => 'showpage', 'uses'=>'ShowsController@show'
-])->where('id','[0-9]+');
+    'as' => 'showpage', 'uses' => 'ShowsController@show'
+])->where('id', '[0-9]+');
 
 // Admin Stuff
 
 
 Route::get('admin', [
-    'uses'=>'Admin\AdminController@index'
+    'uses' => 'Admin\AdminController@index'
 ]);
+/*
+ *  USER ADMIN
+ */
+Route::get('admin/u/l', [
+    'uses' => 'Admin\AdminController@UserList'
+]);
+// Edit User
+Route::get('admin/u/e/{id}', [
+    'uses' => 'Admin\AdminController@UserEdit'
+])->where('id', '[0-9]+');
+
+Route::post('admin/u/e/{id}', [
+    'uses' => 'Admin\AdminController@UserUpdate'
+])->where('id', '[0-9]+');
+
+
 /*
  *    BLOG ADMIN
  */
 // Create Blog Posts
 Route::get('admin/b/c', [
-    'uses'=>'Admin\BlogAdminController@create'
+    'uses' => 'Admin\BlogAdminController@create'
 ]);
 // Edit Blog Posts
 Route::get('admin/b/e/{id}', [
-    'uses'=>'Admin\BlogAdminController@edit'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\BlogAdminController@edit'
+])->where('id', '[0-9]+');
 
 Route::post('admin/b/e/{id}', [
-    'uses'=>'Admin\BlogAdminController@update'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\BlogAdminController@update'
+])->where('id', '[0-9]+');
 // Change Publicity
 Route::get('admin/b/h/{id}', [
-    'uses'=>'Admin\BlogAdminController@togpublivity'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\BlogAdminController@togpublivity'
+])->where('id', '[0-9]+');
 // Create Blog Post
 Route::post('admin/b/c', [
-    'uses'=>'Admin\BlogAdminController@createPost'
+    'uses' => 'Admin\BlogAdminController@createPost'
 ]);
 // Delete Blog Post
 Route::get('admin/b/d/{id}', [
-    'uses'=>'Admin\BlogAdminController@delete'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\BlogAdminController@delete'
+])->where('id', '[0-9]+');
 Route::get('admin/b/dc/{id}', [
-    'uses'=>'Admin\BlogAdminController@DeletePost'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\BlogAdminController@DeletePost'
+])->where('id', '[0-9]+');
 // List All Blog Posts
 Route::get('admin/b/l', [
-    'uses'=>'Admin\BlogAdminController@index'
+    'uses' => 'Admin\BlogAdminController@index'
 ]);
 
 /*
@@ -124,36 +140,35 @@ Route::get('admin/b/l', [
 
 // Create Show
 Route::get('admin/s/c', [
-    'uses'=>'Admin\ShowAdminController@create'
+    'uses' => 'Admin\ShowAdminController@create'
 ]);
 // Edit Show
 Route::get('admin/s/e/{id}', [
-    'uses'=>'Admin\ShowAdminController@edit'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\ShowAdminController@edit'
+])->where('id', '[0-9]+');
 
 Route::post('admin/s/e/{id}', [
-    'uses'=>'Admin\ShowAdminController@update'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\ShowAdminController@update'
+])->where('id', '[0-9]+');
 // Change Publicity
 Route::get('admin/s/h/{id}', [
-    'uses'=>'Admin\ShowAdminController@togpublivity'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\ShowAdminController@togpublivity'
+])->where('id', '[0-9]+');
 // Create Show
 Route::post('admin/s/c', [
-    'uses'=>'Admin\ShowAdminController@createShow'
+    'uses' => 'Admin\ShowAdminController@createShow'
 ]);
 // Delete Show
 Route::get('admin/s/d/{id}', [
-    'uses'=>'Admin\ShowAdminController@delete'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\ShowAdminController@delete'
+])->where('id', '[0-9]+');
 Route::get('admin/s/dc/{id}', [
-    'uses'=>'Admin\ShowAdminController@DeleteShow'
-])->where('id','[0-9]+');
+    'uses' => 'Admin\ShowAdminController@DeleteShow'
+])->where('id', '[0-9]+');
 // List All Show
 Route::get('admin/s/l', [
-    'uses'=>'Admin\ShowAdminController@index'
+    'uses' => 'Admin\ShowAdminController@index'
 ]);
-
 
 
 /*
@@ -161,18 +176,18 @@ Route::get('admin/s/l', [
  */
 // Book a Slot
 Route::get('admin/time/c', [
-    'uses'=>'Admin\ScheduleAdminController@create'
+    'uses' => 'Admin\ScheduleAdminController@create'
 ]);
 
 // List All Bookings
 Route::get('admin/time/l', [
-    'uses'=>'Admin\ScheduleAdminController@index'
+    'uses' => 'Admin\ScheduleAdminController@index'
 ]);
 
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 /**

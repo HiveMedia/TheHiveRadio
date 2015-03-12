@@ -4,9 +4,9 @@
     <div class="container">
         <div class="panel-heading">Our Admin Panel</div>
 
-
         <h2>Blog</h2>
-            <div class="panel-body">
+
+        <div class="panel-body">
             <ul>
                 <li><a href="admin/b/c">Create Post</a></li>
                 <li>{!! Html::Link('admin/b/l','List PostS') !!}</li>
@@ -15,6 +15,7 @@
 
 
         <h2>Shows</h2>
+
         <div class="panel-body">
             <ul>
                 <li><a href="admin/s/c">Create Show</a></li>
@@ -24,6 +25,7 @@
 
 
         <h2>Schedule</h2>
+
         <div class="panel-body">
             <ul>
                 <li><a href="admin/time/c">Book a Show</a></li>
@@ -31,5 +33,12 @@
             </ul>
         </div>
 
+        <h2>Users</h2>
+
+        <div class="panel-body">
+            <ul>
+                <li>{!! Html::Link('admin/u/l','List Users') !!}</li>
+            </ul>
+        </div>
     </div>
 @endsection
