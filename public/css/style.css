@@ -150,6 +150,50 @@ header #site-header .site-text {
     float: left;
 }
 
+/** /s & /s/{id} **/
+
+#site-body .site-content .site-shows .shows-show {
+    border: none;
+    padding: 0px;
+    padding-top: 15px;
+    height: 175px;
+}
+
+#site-body .site-content .site-shows .shows-show h2 {
+    color: #e0e0e0;
+}
+
+#site-body .site-content .site-shows .shows-show h4 {
+    color: #cacaca;
+}
+
+#site-body .site-content .site-shows .shows-show p {
+    color: #aeaeae;
+}
+
+#site-body .site-content .site-shows .shows-show img {
+    max-width: 190px;
+    margin-top: -15px;
+    float: left;
+}
+
+#site-body .site-content .site-show img {
+    max-width: 100%;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#site-body .site-content .site-show .show-content {
+    margin-top: -4px;
+    border-top: solid #2a2 4px;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 5px 15px 15px 15px;
+}
+
+#site-body .site-content .site-show .show-content .show-content-body {
+    color: #fff;
+}
+
 
 /** /home & /b **/
 
