@@ -5,11 +5,11 @@
         <h1>User Register</h1>
 
         @if(count($errors) > 0)
-            <div class="site-register-errors">
-                <h3 class="register-errors-title">Failed to register new user</h3>
+            <div class="form-errors">
+                <h3 class="form-errors-title">Failed to register new user</h3>
 
                 @foreach($errors->all() as $error)
-                    <p class="register-errors-error">{{ $error }}</p>
+                    <p class="form-errors-error">{{ $error }}</p>
                 @endforeach
             </div>
         @endif

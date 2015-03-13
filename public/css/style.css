@@ -40,6 +40,19 @@ h5 { font-size: 14pt; }
 h6 { font-size: 13pt; }
 p  { font-size: 10pt; }
 
+form input {
+    margin-bottom: 10px;
+}
+
+.form-errors {
+    margin-bottom: 50px;
+}
+
+.form-errors .form-errors-title {
+    color: #fff;
+    margin-bottom: 0px;
+}
+
 
 /********************************************************************
  *******                      Site Header                    ********
@@ -109,6 +122,10 @@ header #site-header .site-text {
     background: rgba(20, 20, 20, 0.8);
 }
 
+#site-body .site-content .site-login .site-login-form input {
+    margin-bottom: 10px;
+}
+
 
 /** /staffus **/
 
@@ -160,38 +177,6 @@ header #site-header .site-text {
 
 #site-body .site-content .site-blog .site-blog-post .blog-post-body {
     color: #fff;
-}
-
-
-/*** /auth/login ***/
-
-#site-body .site-content .site-login .site-login-errors {
-    margin-bottom: 50px;
-}
-
-#site-body .site-content .site-login .site-login-errors .login-errors-title {
-    color: #f77;
-    margin-bottom: 0px;
-}
-
-#site-body .site-content .site-login .site-login-form input {
-    margin-bottom: 10px;
-}
-
-
-/*** /auth/register ***/
-
-#site-body .site-content .site-register .site-register-errors {
-    margin-bottom: 50px;
-}
-
-#site-body .site-content .site-register .site-register-errors .register-errors-title {
-    color: #f77;
-    margin-bottom: 0px;
-}
-
-#site-body .site-content .site-register .site-register-form input {
-    margin-bottom: 10px;
 }
 
 /********************************************************************
