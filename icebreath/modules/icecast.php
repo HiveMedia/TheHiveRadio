@@ -104,7 +104,7 @@ class Icecast extends Module {
         $http_resp = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         if(empty($data) || $http_resp != "200")
-            throw new \RuntimeException("Failed to connect to the requested server [$url], got HTTP response code [$http_resp]");
+            throw new \RuntimeException("Failed to connect to the requested server ***MASKED***, got HTTP response code [$http_resp]");
 
         return curl_exec($curl);
     }
