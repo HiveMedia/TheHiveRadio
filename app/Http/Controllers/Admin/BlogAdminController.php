@@ -71,12 +71,15 @@ class BlogAdminController extends Controller
     public function createPost()
     {
         if (\Auth::user()->IsRole('Editor')) {
-
             $input = Request::all();
+            $file  = Request::file('file');
+            $fileName = $file->getClientOriginalName();
 
+            $input['image_url'] = '/img/blog/'.$fileName;
             $input['poster_id'] = \Auth::user()->id;
-            //   dd($input);
             Posts::create($input);
+            $file->move(public_path().'/img/blog/', $fileName);
+
             return view('admin.success');
         } else {
             return '403 Permission Denied';
