@@ -12,15 +12,35 @@
 		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/960.css" type="text/css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
+
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	</head>
 	
 	<body>
 		<!-- *** SITE HEADER *** -->
 		<header>
 			<div id="site-header" class="container_12">
-				<div class="site-logo grid_6">
+				<div class="site-logo grid_5">
 					<img src="{{URL::to('/')}}/img/logo.png">
 				</div>
+
+                <div class="site-player-container grid_7 text-center">
+                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/Tyro" data-current="Tyro"/>
+
+                    <h2>Now Playing On The Hive</h2>
+
+                    <strong>
+                        <span class="nowplaying-song" style="display: block;" title="Soarin' Through the Ice (WWU Mix)">Soarin' Through the Ice (WWU Mix)</span>
+                    </strong>
+
+                    <span class="nowplaying-artist" style="display: block;" title="Omnipony">Omnipony</span>
+                    <span class="nowplaying-listener-count italic bold" style="display: inline;">There are 5 changelings listening</span>
+
+                    <div class="vote">
+                        <!-- Vote API goes Here -->
+                    </div>
+                    <script src="{{URL::to('/')}}/js/now-playing-ajax.js"></script>
+                </div>
 			</div>
 		</header>
 		<!-- *** END SITE HEADER *** -->
@@ -28,7 +48,7 @@
 		<!-- *** SITE BODY *** -->
 		<div id="site-body" class="container_16">
 			<!-- *** SITE MENU *** -->
-			<div class="site-left-sidebar grid_3 fixed-float">
+			<div class="site-left-sidebar grid_3">
 				<ul class="site-sidebar-ul">
 					<a href="{{URL::to('/')}}"><li class="{{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
                     @if( \Auth::guest() ==false )<a href="/admin"><li class="site-sidebar-li {{Request::path() == 'admin' ? 'active' : ''}}">Admin Us</li></a>@endif
@@ -43,13 +63,13 @@
 			<!-- *** END SITE MENU *** -->
 			
 			<!-- *** MAIN SITE CONTENT *** -->
-			<div class="site-content grid_10 prefix_3">
+			<div class="site-content grid_10">
 				@yield('content')
 			</div>
 			<!-- *** END MAIN SITE CONTENT *** -->
 			
 			<!-- *** SITE SIDEBAR CONTENT *** -->
-			<div class="site-right-sidebar grid_3 fixed-float">
+			<div class="site-right-sidebar grid_3">
 				<ul class="site-sidebar-ul">
 					
 					@yield('sidebar-items')
