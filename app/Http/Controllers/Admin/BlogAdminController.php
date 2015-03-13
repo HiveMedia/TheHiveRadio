@@ -71,10 +71,9 @@ class BlogAdminController extends Controller
     public function createPost()
     {
         if (\Auth::user()->IsRole('Editor')) {
+            $file  = Request::file('image');
             $input = Request::all();
-            $file  = Request::file('file');
             $fileName = $file->getClientOriginalName();
-
             $input['image_url'] = '/img/blog/'.$fileName;
             $input['poster_id'] = \Auth::user()->id;
             Posts::create($input);

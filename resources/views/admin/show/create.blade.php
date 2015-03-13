@@ -4,7 +4,7 @@
     <div class="full-content site-create-show header-center">
         <h1 class="create-show-title">New Radio Show</h1>
 
-        {!! Form::open() !!}
+        {!! Form::open(array('files'=>1)) !!}
 
             {!! Form::label('title') !!}
             {!! Form::text('title', null, ['class' => 'imacssclass']) !!}
@@ -15,11 +15,11 @@
             {!! Form::label('description_short') !!}
             {!! Form::text('description_short') !!}
             <br />
-            {!! Form::label('icon_url') !!}
-            {!! Form::url('icon_url') !!}
+            {!! Form::label('icon') !!}
+            {!! Form::file('icon') !!}
             <br />
-            {!! Form::label('banner_url') !!}
-            {!! Form::url('banner_url') !!}
+            {!! Form::label('banner') !!}
+            {!! Form::file('banner') !!}
             <br />
             {!! Form::label('Private') !!}
             {!! Form::checkbox('public') !!}
