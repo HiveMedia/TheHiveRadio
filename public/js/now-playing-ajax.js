@@ -1,21 +1,45 @@
 if(jQuery)
 {
     var updateTime = 10000;
-    var default_mount = "normal.mp3";
+    var default_mount = "/normal.mp3";
+    var icecast_icebreath_uri = "/icebreath/icecast/stats";
+    var covers_icebreath_uri = "/icebreath/covers/";
 
-    function isOffline(data) {
+    //Do NOT touch
+    var host = window.location.protocol + "//" + window.location.host;
+
+    function isOffline(data, mount) {
         try {
-            return data.server_streams[default_mount]['online'] === false || data.server_streams[default_mount]['online'] === null;
+            if(data.status == "error")
+                return true;
+
+            if(data.response.server_streams == null || getMountPointData(mount, data) == null)
+                return true;
+
+            if(!getMountPointData(mount, data).stream_online)
+                return true;
+
+            return false;
         } catch(error) {
             return true;
         }
     }
 
+    function getMountPointData(mount, data) {
+        for(var i = 0; i < data.response.server_streams.length; i++) {
+            if(data.response.server_streams[i].stream_name == mount) {
+                return data.response.server_streams[i];
+            }
+        }
+
+        return null;
+    }
+
     function updateInfo()
     {
-        $.getJSON('https://hiveradio.net/api/icebreath/?func=get&mod=icecast&query=stats', function(data)
+        $.getJSON(host + icecast_icebreath_uri, function(data)
         {
-            if(isOffline(data))
+            if(isOffline(data, default_mount))
             {
                 $('.nowplaying-song').each(function() {
                     $(this).fadeOut(250, function () {
@@ -45,42 +69,41 @@ if(jQuery)
             }
             else
             {
+                var stream_data = getMountPointData(default_mount, data);
+
                 $('.nowplaying-song').each(function() {
-                    if($(this).text() !== data.server_streams[default_mount].song)
-                        $(this).fadeOut(250, function () {
-                            $(this).text(data.server_streams[default_mount].song).fadeIn(250);
-                            $(this).attr('title', data.server_streams[default_mount].song);
+                    if($(this).text() !== stream_data.stream_nowplaying.song)
+                        $(this).fadeOut(250, function() {
+                            $(this).text(stream_data.stream_nowplaying.song).fadeIn(250);
                         });
                 });
 
                 $('.nowplaying-artist').each(function() {
-                    if($(this).text() !== data.server_streams[default_mount].artist)
-                        $(this).fadeOut(250, function () {
-                            $(this).text(data.server_streams[default_mount].artist).fadeIn(250);
-                            $(this).attr('title', data.server_streams[default_mount].artist);
+                    if($(this).text() !== stream_data.stream_nowplaying.artist)
+                        $(this).fadeOut(250, function() {
+                            $(this).text(stream_data.stream_nowplaying.artist).fadeIn(250);
                         });
                 });
 
                 $('.nowplaying-title').each(function() {
-                    if($(this).text() !== data.server_streams[default_mount].title)
-                        $(this).fadeOut(250, function () {
-                            $(this).text(data.server_streams[default_mount].title).fadeIn(250);
-                            $(this).attr('title', data.server_streams[default_mount].title);
+                    if($(this).text() !== stream_data.stream_nowplaying.text)
+                        $(this).fadeOut(250, function() {
+                            $(this).text(stream_data.stream_nowplaying.text).fadeIn(250);
                         });
                 });
 
                 $('.nowplaying-listener-count').each(function() {
-                    if($(this).text() !== (data.server_listener_total == 1 ? "There is " + data.server_listener_total + " changeling listening" : "There are " + data.server_listener_total + " changelings listening"))
-                        $(this).fadeOut(250, function () {
-                            $(this).text((data.server_listener_total == 1 ? "There is " + data.server_listener_total + " changeling listening" : "There are " + data.server_listener_total + " changelings listening")).fadeIn(250);
+                    if($(this).text() != data.response.server_listeners_unique)
+                        $(this).fadeOut(250, function() {
+                            $(this).text(data.response.server_listeners_unique).fadeIn(250);
                         });
                 });
 
                 $('.nowplaying-cover').each(function() {
-                    if($(this).attr('data-current') !== data.server_streams[default_mount].artist)
+                    if($(this).attr('data-artist') !== stream_data.stream_nowplaying.artist)
                     {
-                        $(this).attr('src', '//hiveradio.net/api/icebreath/?func=get&mod=cover&artist=' + data.server_streams[default_mount].artist);
-                        $(this).attr('data-current', data.server_streams[default_mount].artist);
+                        $(this).attr('src', host + covers_icebreath_uri + stream_data.stream_nowplaying.artist);
+                        $(this).attr('data-artist', stream_data.stream_nowplaying.artist);
                     }
                 });
 

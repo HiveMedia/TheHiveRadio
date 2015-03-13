@@ -25,16 +25,18 @@
 				</div>
 
                 <div class="site-player-container grid_7 text-center">
-                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/Tyro" data-current="Tyro"/>
+                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/UnknownArtistCoverPlease"/>
 
                     <h2>Now Playing On The Hive</h2>
 
                     <strong>
-                        <span class="nowplaying-song" style="display: block;" title="Soarin' Through the Ice (WWU Mix)">Soarin' Through the Ice (WWU Mix)</span>
+                        <span class="nowplaying-song">Loading station data ...</span>
                     </strong>
 
-                    <span class="nowplaying-artist" style="display: block;" title="Omnipony">Omnipony</span>
-                    <span class="nowplaying-listener-count italic bold" style="display: inline;">There are 5 changelings listening</span>
+                    <br>
+
+                    <span class="nowplaying-artist">Please wait</span> <br>
+                    <strong>There are <span class="nowplaying-listener-count">0</span> listeners tuned in</strong>
 
                     <div class="vote">
                         <!-- Vote API goes Here -->
