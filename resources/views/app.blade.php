@@ -28,7 +28,7 @@
 		<!-- *** SITE BODY *** -->
 		<div id="site-body" class="container_16">
 			<!-- *** SITE MENU *** -->
-			<div class="site-left-sidebar grid_3 fixed-float">
+			<div class="site-left-sidebar grid_3">
 				<ul class="site-sidebar-ul">
 					<a href="{{URL::to('/')}}"><li class="{{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
                     @if( \Auth::guest() ==false )<a href="/admin"><li class="site-sidebar-li {{Request::path() == 'admin' ? 'active' : ''}}">Admin Us</li></a>@endif
@@ -43,13 +43,13 @@
 			<!-- *** END SITE MENU *** -->
 			
 			<!-- *** MAIN SITE CONTENT *** -->
-			<div class="site-content grid_10 prefix_3">
+			<div class="site-content grid_10">
 				@yield('content')
 			</div>
 			<!-- *** END MAIN SITE CONTENT *** -->
 			
 			<!-- *** SITE SIDEBAR CONTENT *** -->
-			<div class="site-right-sidebar grid_3 fixed-float">
+			<div class="site-right-sidebar grid_3">
 				<ul class="site-sidebar-ul">
 					
 					@yield('sidebar-items')

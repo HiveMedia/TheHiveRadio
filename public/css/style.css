@@ -76,10 +76,6 @@ header #site-header .site-text {
  *******                   Site Sidebar Left                 ********
  ********************************************************************/
 
-#site-body .fixed-float {
-    position: fixed;
-}
-
 #site-body .site-left-sidebar {
 	background: rgba(20, 20, 20, 0.8);
 	padding: 0px;
