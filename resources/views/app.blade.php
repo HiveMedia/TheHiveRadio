@@ -12,61 +12,36 @@
 		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/960.css" type="text/css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
+
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	</head>
 	
 	<body>
 		<!-- *** SITE HEADER *** -->
 		<header>
 			<div id="site-header" class="container_12">
-				<div class="site-logo grid_6">
+				<div class="site-logo grid_5">
 					<img src="{{URL::to('/')}}/img/logo.png">
 				</div>
+
+                <div class="site-player-container grid_7 text-center">
+                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/Tyro" data-current="Tyro"/>
+
+                    <h2>Now Playing On The Hive</h2>
+
+                    <strong>
+                        <span class="nowplaying-song" style="display: block;" title="Soarin' Through the Ice (WWU Mix)">Soarin' Through the Ice (WWU Mix)</span>
+                    </strong>
+
+                    <span class="nowplaying-artist" style="display: block;" title="Omnipony">Omnipony</span>
+                    <span class="nowplaying-listener-count italic bold" style="display: inline;">There are 5 changelings listening</span>
+
+                    <div class="vote">
+                        <!-- Vote API goes Here -->
+                    </div>
+                    <script src="{{URL::to('/')}}/js/now-playing-ajax.js"></script>
+                </div>
 			</div>
-
-            <div id="site-player-container" class="grid_6">
-                <!-- Steam List Stuff -->
-                <div id="streams">
-                    <ul>
-                        <li><h3>Our Streams</h3></li>
-                        <li><a href="{{URL::to('/playlist/mobile.low.aac.m3u')}}">Mobile Low</a></li>
-                        <li><a href="{{URL::to('/playlist/mobile.med.aac.m3u')}}">Mobile Medium</a></li>
-                        <li><a href="{{URL::to('/playlist/normal.mp3.m3u')}}">Standard MP3</a></li>
-                        <li><a href="{{URL::to('/playlist/normal.aac.m3u')}}">Standard AAC</a></li>
-                        <li><a href="{{URL::to('/playlist/high.quality.aac.m3u')}}">High Quality</a></li>
-                    </ul>
-                </div>
-
-
-                <!-- Audio Player Stuff -->
-                <audio id="site-player" src="https://hiveradio.net/normal.mp3"></audio>
-
-                <div id="site-player-controls" class="site-sidebar-ul">
-                    <ul>
-                        <li><a onclick="document.getElementById('site-player').play()">Play</a></li>
-                        <li><a onclick="document.getElementById('site-player').pause()">Stop</a></li>
-                        <input type="range" id='site-player-volume' min="0" max="1.1" value="1"
-                               step="0.01"
-                               onmouseout="document.getElementById('site-player').volume=document.getElementById('site-player-volume').value"
-                               onclick="document.getElementById('site-player').volume=document.getElementById('site-player-volume').value"
-                                >
-                    </ul>
-                </div>
-                <!-- Now playing Stuff -->
-                <div class="nowplaying-lrg">
-                    <img class="nowplaying-cover left" src="{{URL::to('/')}}/icebreath/covers/Tyro" data-current="Tyro"/>
-                        <h2>Now Playing On The Hive</h2>
-                        <strong>
-                            <span class="nowplaying-song" style="display: block;" title="Soarin' Through the Ice (WWU Mix)">Soarin' Through the Ice (WWU Mix)</span>
-                        </strong>
-                        <span class="nowplaying-artist" style="display: block;" title="Omnipony">Omnipony</span>
-                        <span class="nowplaying-listener-count italic bold" style="display: inline;">There are 5 changelings listening</span>
-
-                        <div class="vote">
-                            <!-- Vote API goes Here -->
-                        </div>
-                        <script src="{{URL::to('/')}}/js/now-playing-ajax.js"></script>
-                </div>
-            </div>
 		</header>
 		<!-- *** END SITE HEADER *** -->
 		

@@ -67,10 +67,20 @@ header img {
 	width: 100%;
 }
 
-header #site-header .site-text {
-	margin-top: 18px;
+header #site-header .site-player-container .nowplaying-cover {
+    max-width: 125px;
+    float: left;
 }
 
+header #site-header .site-player-container {
+    background: rgba(40, 40, 40, 0.8);
+    color: #fff;
+    font-size: 9pt;
+}
+
+header #site-header .site-player-container h2 {
+    margin-top: 12px;
+}
 
 /********************************************************************
  *******                   Site Sidebar Left                 ********

@@ -91,6 +91,4 @@ if(jQuery)
 
     updateInfo();
     setInterval(function() { updateInfo(); }, updateTime);
-}/**
- * Created by Kyle on 13/03/2015.
- */
+}
