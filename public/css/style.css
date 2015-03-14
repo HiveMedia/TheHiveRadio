@@ -68,18 +68,85 @@ header img {
 }
 
 header #site-header .site-player-container .nowplaying-cover {
-    max-width: 125px;
+    width: 125px;
     float: left;
 }
 
 header #site-header .site-player-container {
-    background: rgba(40, 40, 40, 0.8);
+    background: rgba(20, 20, 20, 0.8);
     color: #fff;
     font-size: 9pt;
 }
 
 header #site-header .site-player-container h2 {
     margin-top: 12px;
+}
+
+header #site-header .site-player-container .player-container-player {
+    margin-top: 16px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu {
+    list-style: none;
+    margin: 0px 0px 0px -40px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item {
+    float: left;
+    padding: 5px 15px;
+    background-color: #282;
+    border-left: solid #262 2px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item:hover {
+    background-color: #262;
+    cursor: pointer;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu {
+    display: none;
+
+    position: absolute;
+    list-style: none;
+    margin: 5px 0px 0px -57px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu:hover,
+header #site-header .site-player-container .player-container-player .player-menu .menu-item:hover .sub-menu {
+    display: block;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu .sub-menu-item {
+    background-color: #282;
+    color: #fff;
+    width: 148px;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu .sub-menu-item:hover {
+    background-color: #262;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .player-volume-bar {
+    width: 46%;
+    text-align: left;
+    background-color: #282 !important;
+    cursor: auto !important;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .player-volume-bar .volume-bar {
+    width: 140px;
+    margin: 4px 0px 0px 0px;
+    background: #333;
+    height: 10px;
+    float: right;
+    cursor: pointer !important;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .player-volume-bar .volume-bar .bar-value {
+    height: 100%;
+    background-color: #5c5;
 }
 
 /********************************************************************

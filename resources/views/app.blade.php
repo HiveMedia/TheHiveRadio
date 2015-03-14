@@ -20,14 +20,14 @@
 		<!-- *** SITE HEADER *** -->
 		<header>
 			<div id="site-header" class="container_12">
-				<div class="site-logo grid_5">
+				<div class="site-logo grid_6">
 					<img src="{{URL::to('/')}}/img/logo.png">
 				</div>
 
-                <div class="site-player-container grid_7 text-center">
+                <div class="site-player-container grid_6 text-center">
                     <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/UnknownArtistCoverPlease"/>
 
-                    <h2>Now Playing On The Hive</h2>
+                    <h2>Now Playing On The Hive Radio</h2>
 
                     <strong>
                         <span class="nowplaying-song">Loading station data ...</span>
@@ -38,9 +38,33 @@
                     <span class="nowplaying-artist">Please wait</span> <br>
                     <strong>There are <span class="nowplaying-listener-count">0</span> listeners tuned in</strong>
 
-                    <div class="vote">
-                        <!-- Vote API goes Here -->
+                    <div class="player-container-player">
+                        <ul class="player-menu">
+                            <li class="menu-item">
+                                <i class="fa fa-arrow-circle-down"></i> Download Playlist
+
+                                <ul class="sub-menu">
+                                    <a href="{{URL::to('/playlist/mobile.low.aac.m3u')}}"><li class="sub-menu-item">Mobile Low</li></a>
+                                    <a href="{{URL::to('/playlist/mobile.med.aac.m3u')}}"><li class="sub-menu-item">Mobile Medium</li></a>
+                                    <a href="{{URL::to('/playlist/normal.mp3.m3u')}}"><li class="sub-menu-item">Standard MP3</li></a>
+                                    <a href="{{URL::to('/playlist/normal.aac.m3u')}}"><li class="sub-menu-item">Standard AAC</li></a>
+                                    <a href="{{URL::to('/playlist/high.quality.aac.m3u')}}"><li class="sub-menu-item">High Quality</li></a>
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item player-button" data-state="play"><i class="fa fa-play-circle"></i> Play</li>
+
+                            <li class="menu-item player-volume-bar">
+                                <i class="fa fa-volume-up"></i> Volume
+                                <div class="volume-bar">
+                                    <div class="bar-value" style="width: 50%"></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <audio id="player" src="https://hiveradio.net/normal.mp3"></audio>
                     </div>
+
                     <script src="{{URL::to('/')}}/js/now-playing-ajax.js"></script>
                 </div>
 			</div>
