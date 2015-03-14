@@ -40,6 +40,19 @@ h5 { font-size: 14pt; }
 h6 { font-size: 13pt; }
 p  { font-size: 10pt; }
 
+form input {
+    margin-bottom: 10px;
+}
+
+.form-errors {
+    margin-bottom: 50px;
+}
+
+.form-errors .form-errors-title {
+    color: #fff;
+    margin-bottom: 0px;
+}
+
 
 /********************************************************************
  *******                      Site Header                    ********
@@ -54,18 +67,92 @@ header img {
 	width: 100%;
 }
 
-header #site-header .site-text {
-	margin-top: 18px;
+header #site-header .site-player-container .nowplaying-cover {
+    width: 125px;
+    float: left;
 }
 
+header #site-header .site-player-container {
+    background: rgba(20, 20, 20, 0.8);
+    color: #fff;
+    font-size: 9pt;
+}
+
+header #site-header .site-player-container h2 {
+    margin-top: 12px;
+}
+
+header #site-header .site-player-container .player-container-player {
+    margin-top: 16px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu {
+    list-style: none;
+    margin: 0px 0px 0px -40px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item {
+    float: left;
+    padding: 5px 15px;
+    background-color: #282;
+    border-left: solid #262 2px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item:hover {
+    background-color: #262;
+    cursor: pointer;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu {
+    display: none;
+
+    position: absolute;
+    list-style: none;
+    margin: 5px 0px 0px -57px;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu:hover,
+header #site-header .site-player-container .player-container-player .player-menu .menu-item:hover .sub-menu {
+    display: block;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu .sub-menu-item {
+    background-color: #282;
+    color: #fff;
+    width: 148px;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .menu-item .sub-menu .sub-menu-item:hover {
+    background-color: #262;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .player-volume-bar {
+    width: 46%;
+    text-align: left;
+    background-color: #282 !important;
+    cursor: auto !important;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .player-volume-bar .volume-bar {
+    width: 140px;
+    margin: 4px 0px 0px 0px;
+    background: #333;
+    height: 10px;
+    float: right;
+    cursor: pointer !important;
+}
+
+header #site-header .site-player-container .player-container-player .player-menu .player-volume-bar .volume-bar .bar-value {
+    height: 100%;
+    background-color: #5c5;
+    transition: width 0.6s ease;
+}
 
 /********************************************************************
  *******                   Site Sidebar Left                 ********
  ********************************************************************/
-
-#site-body .fixed-float {
-    position: fixed;
-}
 
 #site-body .site-left-sidebar {
 	background: rgba(20, 20, 20, 0.8);
@@ -104,9 +191,13 @@ header #site-header .site-text {
 #site-body .site-content .full-content {
     color: #e0e0e0;
     margin: 0% 0%;
-    padding: 15px 25px;
+    padding: 5px 25px 35px 25px;
     border-top: solid 4px #262;
     background: rgba(20, 20, 20, 0.8);
+}
+
+#site-body .site-content .site-login .site-login-form input {
+    margin-bottom: 10px;
 }
 
 
@@ -135,6 +226,50 @@ header #site-header .site-text {
     max-width: 190px;
     margin-top: -15px;
     float: left;
+}
+
+/** /s & /s/{id} **/
+
+#site-body .site-content .site-shows .shows-show {
+    border: none;
+    padding: 0px;
+    padding-top: 15px;
+    height: 175px;
+}
+
+#site-body .site-content .site-shows .shows-show h2 {
+    color: #e0e0e0;
+}
+
+#site-body .site-content .site-shows .shows-show h4 {
+    color: #cacaca;
+}
+
+#site-body .site-content .site-shows .shows-show p {
+    color: #aeaeae;
+}
+
+#site-body .site-content .site-shows .shows-show img {
+    max-width: 190px;
+    margin-top: -15px;
+    float: left;
+}
+
+#site-body .site-content .site-show img {
+    max-width: 100%;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#site-body .site-content .site-show .show-content {
+    margin-top: -4px;
+    border-top: solid #2a2 4px;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 5px 15px 15px 15px;
+}
+
+#site-body .site-content .site-show .show-content .show-content-body {
+    color: #fff;
 }
 
 
