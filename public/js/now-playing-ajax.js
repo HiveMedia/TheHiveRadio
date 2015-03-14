@@ -114,4 +114,33 @@ if(jQuery)
 
     updateInfo();
     setInterval(function() { updateInfo(); }, updateTime);
+
+    $('.player-container-player .volume-bar').click(function(e) {
+        var posX = $(this).offset().left, volume = (e.pageX - posX) / $(this).width();
+
+        $('.player-container-player #player')[0].volume = volume;
+        $('.player-container-player .volume-bar .bar-value').css('width', volume * 100 + '%');
+    });
+
+    $('.player-container-player .player-button').click(function(e) {
+        if($(this).attr('data-state') == "play") {
+
+            $(this).find('i').removeClass('fa-play-circle');
+            $(this).find('i').addClass('fa-stop');
+            $(this).find('span').text('Stop');
+
+            $('.player-container-player #player')[0].load();
+            $('.player-container-player #player')[0].play();
+
+            $(this).attr('data-state', 'stop');
+        } else {
+            $(this).find('i').removeClass('fa-stop');
+            $(this).find('i').addClass('fa-play-circle');
+            $(this).find('span').text('Play');
+
+            $('.player-container-player #player')[0].pause();
+
+            $(this).attr('data-state', 'play');
+        }
+    });
 }

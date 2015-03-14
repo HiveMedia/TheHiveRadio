@@ -52,7 +52,7 @@
                                 </ul>
                             </li>
                             
-                            <li class="menu-item player-button" data-state="play"><i class="fa fa-play-circle"></i> Play</li>
+                            <li class="menu-item player-button" data-state="play"><i class="fa fa-play-circle"></i> <span>Play</span></li>
 
                             <li class="menu-item player-volume-bar">
                                 <i class="fa fa-volume-up"></i> Volume
