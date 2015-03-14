@@ -6,7 +6,6 @@ class RadioSchedule extends Model {
 
 	//
     //
-    protected $table = 'shows';
     protected $fillable = [
         'showid',
         'start',

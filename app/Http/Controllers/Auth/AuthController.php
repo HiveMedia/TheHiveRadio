@@ -49,11 +49,12 @@ class AuthController extends Controller
                 $request, $validator
             );
         }
+        $this->auth->login($this->registrar->create($request->all()));
 
         $recipient = $request->all()['email'];
         Mail::send('emails.welcome', ['name' => $request->all()['name']],
             function ($message) use ($recipient) {
-                $message->to($recipient)->subject('Welcome New User!')->cc('admin@hivemedia.net.au');
+                $message->to($recipient)->subject('Welcome New User!')->bcc('admin@hivemedia.net.au');
             }
         );
 
