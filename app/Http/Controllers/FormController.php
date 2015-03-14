@@ -19,7 +19,7 @@ class FormController extends Controller
     {
         if (\Auth::user()->id) {
             $application = Applications::all()->where('user_id', \Auth::user()->id)->where('status',1);
-            if ($application) {
+            if (isset($application[0])) {
                 return 'Error already applied';
             }
         }
@@ -30,7 +30,8 @@ class FormController extends Controller
     {
         if (\Auth::user()->id) {
             $application = Applications::all()->where('user_id',\Auth::user()->id)->where('status',1);
-            if ($application)
+
+            if (isset($application[0]))
             {
                 return 'Error already applied';
             }

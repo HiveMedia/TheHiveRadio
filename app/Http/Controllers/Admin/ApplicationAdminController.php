@@ -22,7 +22,7 @@ class ApplicationAdminController extends Controller
             return view('admin.applications.index')->with('applicationsdata', $application->toArray());
         } else {
             $application = Applications::all()->where('user_id', \Auth::user()->id);
-            if ($application != null) {
+            if (isset($application[0])) {
                 return view('form.staffapplication')->with('application', $application['0']->toArray())->with('read', true);
             }
             return '403 Permission Denied';
