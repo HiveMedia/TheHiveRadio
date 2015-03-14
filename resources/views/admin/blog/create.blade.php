@@ -6,7 +6,7 @@
                     <hr />
 
                     <div class="panel-body">
-                    {!! Form::open() !!}
+                    {!! Form::open(array('files'=>1)) !!}
 
                         {!! Form::label('title') !!}
                         {!! Form::text('title', null, ['class' => 'imacssclass']) !!}
@@ -14,8 +14,8 @@
                         {!! Form::label('Post') !!}
                         {!! Form::textarea('body') !!}
                         <br />
-                        {!! Form::label('image_url') !!}
-                        {!! Form::url('image_url') !!}
+                        {!! Form::label('image:') !!}
+                        {!! Form::file('image') !!}
                         <br />
                         {!! Form::label('Private') !!}
                         {!! Form::checkbox('public') !!}

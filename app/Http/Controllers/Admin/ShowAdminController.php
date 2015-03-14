@@ -72,10 +72,20 @@ class ShowAdminController extends Controller
     public function createShow()
     {
         if (\Auth::user()->IsRole('Admin')) {
+            $icon  = Request::file('icon');
+            $banner  = Request::file('banner');
             $input = Request::all();
-            $input['poster_id'] = \Auth::user()->id;
-            //   dd($input);
+            $iconName = $icon->getClientOriginalName();
+            $input['icon_url'] = '/img/show/icon/'.$iconName;
+            $bannerName = $banner->getClientOriginalName();
+            $input['banner_url'] = '/img/show/banner/'.$bannerName;
+
+
+            // $input['poster_id'] = \Auth::user()->id;
             RadioShows::create($input);
+            $icon->move(public_path().'/img/show/icon/', $iconName);
+            $banner->move(public_path().'/img/show/banner/', $bannerName);
+
             return view('admin.success');
         } else {
             return '403 Permission Denied';

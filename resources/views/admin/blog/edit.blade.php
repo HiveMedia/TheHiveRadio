@@ -15,7 +15,7 @@
                         {!! Form::textarea('body', $postdata['body']) !!}
                         <br />
                         {!! Form::label('image_url') !!}
-                        {!! Form::url('image_url', $postdata['image_url']) !!}
+                        {!! Form::text('image_url', $postdata['image_url']) !!}
                         <br />
                         {!! Form::label('Private') !!}
                         {!! Form::checkbox('public', $postdata['public']) !!}

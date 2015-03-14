@@ -12,6 +12,8 @@
 		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/960.css" type="text/css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
+
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	</head>
 	
 	<body>
@@ -21,14 +23,58 @@
 				<div class="site-logo grid_6">
 					<img src="{{URL::to('/')}}/img/logo.png">
 				</div>
+
+                <div class="site-player-container grid_6 text-center">
+                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/UnknownArtistCoverPlease"/>
+
+                    <h2>Now Playing On The Hive Radio</h2>
+
+                    <strong>
+                        <span class="nowplaying-song">Loading station data ...</span>
+                    </strong>
+
+                    <br>
+
+                    <span class="nowplaying-artist">Please wait</span> <br>
+                    <strong>There are <span class="nowplaying-listener-count">0</span> listeners tuned in</strong>
+
+                    <div class="player-container-player">
+                        <ul class="player-menu">
+                            <li class="menu-item">
+                                <i class="fa fa-arrow-circle-down"></i> Download Playlist
+
+                                <ul class="sub-menu">
+                                    <a href="{{URL::to('/playlist/mobile.low.aac.m3u')}}"><li class="sub-menu-item">Mobile Low</li></a>
+                                    <a href="{{URL::to('/playlist/mobile.med.aac.m3u')}}"><li class="sub-menu-item">Mobile Medium</li></a>
+                                    <a href="{{URL::to('/playlist/normal.mp3.m3u')}}"><li class="sub-menu-item">Standard MP3</li></a>
+                                    <a href="{{URL::to('/playlist/normal.aac.m3u')}}"><li class="sub-menu-item">Standard AAC</li></a>
+                                    <a href="{{URL::to('/playlist/high.quality.aac.m3u')}}"><li class="sub-menu-item">High Quality</li></a>
+                                </ul>
+                            </li>
+                            
+                            <li class="menu-item player-button" data-state="play"><i class="fa fa-play-circle"></i> <span>Play</span></li>
+
+                            <li class="menu-item player-volume-bar">
+                                <i class="fa fa-volume-up"></i> Volume
+                                <div class="volume-bar">
+                                    <div class="bar-value" style="width: 50%"></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <audio id="player" src="https://hiveradio.net/normal.mp3"></audio>
+                    </div>
+
+                    <script src="{{URL::to('/')}}/js/now-playing-ajax.js"></script>
+                </div>
 			</div>
 		</header>
 		<!-- *** END SITE HEADER *** -->
-		
+
 		<!-- *** SITE BODY *** -->
 		<div id="site-body" class="container_16">
 			<!-- *** SITE MENU *** -->
-			<div class="site-left-sidebar grid_3 fixed-float">
+			<div class="site-left-sidebar grid_3">
 				<ul class="site-sidebar-ul">
 					<a href="{{URL::to('/')}}"><li class="{{Request::path() == '/' ? 'active' : ''}}">Home</li></a>
                     @if( \Auth::guest() ==false )<a href="/admin"><li class="site-sidebar-li {{Request::path() == 'admin' ? 'active' : ''}}">Admin Us</li></a>@endif
@@ -43,13 +89,13 @@
 			<!-- *** END SITE MENU *** -->
 			
 			<!-- *** MAIN SITE CONTENT *** -->
-			<div class="site-content grid_10 prefix_3">
+			<div class="site-content grid_10">
 				@yield('content')
 			</div>
 			<!-- *** END MAIN SITE CONTENT *** -->
 			
 			<!-- *** SITE SIDEBAR CONTENT *** -->
-			<div class="site-right-sidebar grid_3 fixed-float">
+			<div class="site-right-sidebar grid_3">
 				<ul class="site-sidebar-ul">
 					
 					@yield('sidebar-items')
