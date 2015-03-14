@@ -18,7 +18,7 @@
     </ul>
     
     <h4 style="text-align: left;"><b>All good? Ok, lets apply!</b></h4>
-    <p>Fill out the form here: <a href="https://docs.google.com/forms/d/1bDlyqjE9Enz7wqVseSiy_b13n1GOCiK4x1lS6IMjcyA/viewform">Staff Application Form</a>. We check all submissions every 24 to 48 hours so if you don't receive a response straight away, don't worry, we may still be processing your submission. Please be patient</p>
+    <p>Fill out the form here: <a href="{{ URL::to('/apply') }}">Staff Application Form</a>. We check all submissions every 24 to 48 hours so if you don't receive a response straight away, don't worry, we may still be processing your submission. Please be patient</p>
     
     <h4 style="text-align: left;"><b>Privacy Information</b></h4>
     <p>In accordance with the Australian Privacy Act (1988), all information provided via this form will be kept private and only the people required to view this information will have access to it. This information will not be shared with any other person(s) or 3rd parties.</p>

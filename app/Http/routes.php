@@ -23,10 +23,15 @@ Route::get('/join', 'StaticController@joinus');
 
 // Staff Page
 Route::get('/staff', 'StaticController@staffus');
+
 // Lol Jokes EFN
 Route::get('/uefi', 'StaticController@staffus');
+
 // Chat Page
 Route::get('/chat', 'StaticController@chatus');
+
+// Legal stuff
+Route::get('/ABP', 'StaticController@abp');
 
 
 /*
@@ -55,7 +60,6 @@ Route::get('b/{id}', [
     'as' => 'post', 'uses' => 'Blog@post'
 ])->where('id', '[0-9]+');
 
-
 // Blog Pages
 Route::get('b', [
     'uses' => 'Blog@pageone'
@@ -76,6 +80,14 @@ Route::get('s', [
 Route::get('s/{id}', [
     'as' => 'showpage', 'uses' => 'ShowsController@show'
 ])->where('id', '[0-9]+');
+
+
+// Forms
+// Application Page
+Route::get('/apply', 'FormController@applyus');
+Route::post('/apply', 'FormController@createapply');
+
+
 
 // Admin Stuff
 
@@ -169,6 +181,24 @@ Route::get('admin/s/dc/{id}', [
 Route::get('admin/s/l', [
     'uses' => 'Admin\ShowAdminController@index'
 ]);
+
+/*
+ * Application Admin
+ */
+// List All Application
+Route::get('admin/application/l', [
+    'uses' => 'Admin\ApplicationAdminController@index'
+]);
+Route::get('admin/application/JUDGMENTDAY/{id}', [
+    'uses' => 'Admin\ApplicationAdminController@view'
+])->where('id', '[0-9]+');
+Route::get('admin/application/AwwWelcomeDude/{id}', [
+    'uses' => 'Admin\ApplicationAdminController@approve'
+])->where('id', '[0-9]+');
+Route::get('admin/application/DENYFUCKER/{id}', [
+    'uses' => 'Admin\ApplicationAdminController@deny'
+])->where('id', '[0-9]+');
+
 
 
 /*
