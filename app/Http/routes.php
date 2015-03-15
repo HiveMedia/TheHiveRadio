@@ -69,7 +69,7 @@ Route::get('b/page/', [
 ]);
 
 Route::get('b/page/{id}', [
-    'as' => 'blogpage', 'uses' => 'Blog@page'
+    'as' => 'blogpage', 'uses' => 'Blog@post'
 ])->where('id', '[0-9]+');
 
 // Shows

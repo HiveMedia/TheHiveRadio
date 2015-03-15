@@ -1,25 +1,19 @@
 @extends('app')
 
 @section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Our Blog Posts</div>
+    <div class="site-blog">
+        @foreach($postsdata as $post)
+            <div class="site-blog-post">
+                <img class="blog-post-img" src="{{ $post['image_url'] }}">
 
-				<div class="panel-body">
-                    @foreach($postsdata as $post)
-                        <article>
-                            <h2><a href='/b/{{ $post['id'] }}'>{{$post['title']}}</a></h2>
-                            <div>
-                                {{$post['subject']}}
-                            </div>
-                            <hr />
-                        </article>
-                    @endforeach
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                <div class="blog-post-content">
+                    <a href="{{ URL::to('b/page') }}/{{ $post['id'] }}"><h1 class="blog-post-title">{{ $post['title'] }}</h1></a>
+                    <h3 class="blog-post-posted">Posted By {{ $post['poster_name'] }} - {{ $post['created_at'] }}</h3>
+                    <div class="blog-post-body">
+                        {{ $post['body'] }}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
