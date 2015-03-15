@@ -54,7 +54,7 @@ class IcebreathController extends Controller {
 
             if($resp->getResponseType() == "application/json") {
                 $builtResp = response(
-                    array('status' => 'successful', 'response' => $resp->getOutput(), 'timestamp' => time()),
+                    array('status' => 'successful', 'result' => $resp->getOutput(), 'timestamp' => time()),
                     $resp->getHTTPCode()
                 );
             } else {
