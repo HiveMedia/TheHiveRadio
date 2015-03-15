@@ -3,7 +3,7 @@
 use Icebreath\Module;
 use Icebreath\Response;
 
-class Icecast extends Module {
+class icecast extends Module {
 
     private $VERSION = "0.1.0";
 

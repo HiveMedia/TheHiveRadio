@@ -4,7 +4,7 @@ use Icebreath\Module;
 use Icebreath\Response;
 use Carbon\Carbon;
 
-class Covers extends Module {
+class covers extends Module {
 
     private $VERSION = "0.1.0";
 
