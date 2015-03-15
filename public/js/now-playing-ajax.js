@@ -13,7 +13,7 @@ if(jQuery)
             if(data.status == "error")
                 return true;
 
-            if(data.response.server_streams == null || getMountPointData(mount, data) == null)
+            if(data.result.server_streams == null || getMountPointData(mount, data) == null)
                 return true;
 
             if(!getMountPointData(mount, data).stream_online)
@@ -26,9 +26,9 @@ if(jQuery)
     }
 
     function getMountPointData(mount, data) {
-        for(var i = 0; i < data.response.server_streams.length; i++) {
-            if(data.response.server_streams[i].stream_name == mount) {
-                return data.response.server_streams[i];
+        for(var i = 0; i < data.result.server_streams.length; i++) {
+            if(data.result.server_streams[i].stream_name == mount) {
+                return data.result.server_streams[i];
             }
         }
 
@@ -93,9 +93,9 @@ if(jQuery)
                 });
 
                 $('.nowplaying-listener-count').each(function() {
-                    if($(this).text() != data.response.server_listeners_unique)
+                    if($(this).text() != data.result.server_listeners_unique)
                         $(this).fadeOut(250, function() {
-                            $(this).text(data.response.server_listeners_unique).fadeIn(250);
+                            $(this).text(data.result.server_listeners_unique).fadeIn(250);
                         });
                 });
 
