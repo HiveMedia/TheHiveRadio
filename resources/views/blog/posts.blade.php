@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="site-blog">
+        <ul class="site-blog-nav">
+            @if($pagination['Last'] != 0)
+                <a class="nav-item nav-back" href="{{URL::to('/b/page').'/'.$pagination['Last']}}">Back</a>
+            @endif
+
+            @if($pagination['Next'] != 0)
+                <a class="nav-item nav-next" href="{{URL::to('/b/page').'/'.$pagination['Next']}}">Next</a>
+            @endif
+        </ul>
+
         @foreach($postsdata as $post)
             <div class="site-blog-post">
                 <img class="blog-post-img" src="{{ $post['image_url'] }}">
@@ -15,12 +25,15 @@
                 </div>
             </div>
         @endforeach
-        @if($pagination['Last'] != 0)
-            <a href="{{URL::to('/b/page').'/'.$pagination['Last']}}">Back</a>
-        @endif
 
-        @if($pagination['Next'] != 0)
-            <a href="{{URL::to('/b/page').'/'.$pagination['Next']}}">Next</a>
-        @endif
+        <ul class="site-blog-nav">
+            @if($pagination['Last'] != 0)
+                <a class="nav-item nav-back" href="{{URL::to('/b/page').'/'.$pagination['Last']}}"><li>Back</li></a>
+            @endif
+
+            @if($pagination['Next'] != 0)
+                <a class="nav-item nav-next" href="{{URL::to('/b/page').'/'.$pagination['Next']}}"><li>Next</li></a>
+            @endif
+        </ul>
     </div>
 @endsection

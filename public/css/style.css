@@ -274,6 +274,32 @@ header #site-header .site-player-container .player-container-player .player-menu
 
 
 /** /home & /b **/
+
+#site-body .site-content .site-blog .site-blog-nav {
+    background: rgb(20, 20, 20);
+    height: 27px;
+    list-style: none;
+    padding: 0px;
+}
+
+#site-body .site-content .site-blog .site-blog-nav .nav-item {
+    padding: 2.5px 15px;
+    background-color: #262;
+    color: #fff;
+}
+
+#site-body .site-content .site-blog .site-blog-nav .nav-item:hover {
+    background-color: #282;
+}
+
+#site-body .site-content .site-blog .site-blog-nav .nav-next {
+    float: right;
+}
+
+#site-body .site-content .site-blog .site-blog-nav .nav-back {
+    float: left;
+}
+
 #site-body .site-content .site-blog .site-blog-post {
     margin-bottom: 40px;
 }
