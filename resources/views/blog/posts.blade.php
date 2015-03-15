@@ -15,5 +15,12 @@
                 </div>
             </div>
         @endforeach
+        @if($pagination['Last'] != 0)
+            <a href="{{URL::to('/b/page').'/'.$pagination['Last']}}">Back</a>
+        @endif
+
+        @if($pagination['Next'] != 0)
+            <a href="{{URL::to('/b/page').'/'.$pagination['Next']}}">Next</a>
+        @endif
     </div>
 @endsection

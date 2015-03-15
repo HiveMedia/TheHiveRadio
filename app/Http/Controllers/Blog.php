@@ -4,8 +4,9 @@ use App\Http\Requests;
 use App\Posts;
 use App\User;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
+use SebastianBergmann\Comparator\ArrayComparatorTest;
 
 class Blog extends Controller
 {
@@ -33,8 +34,6 @@ class Blog extends Controller
     public function pageone()
     {
         $postsdata = Posts::all()->sortBy('id')->where('public', '=', false)->forPage(1, 5);
-        $postsdata = $postsdata->toArray();
-
         foreach ($postsdata as $post) {
             $postsdat[$post['id']] = $post;
             $poster = User::find($post['poster_id']);
@@ -45,7 +44,7 @@ class Blog extends Controller
                 return 'INTERNAL ERROR: 1';
             }
         }
-        return view('blog.posts')->with('postsdata', $postsdat);
+        return view('blog.posts')->with('postsdata', $postsdat)->with('pagination', Array('Last'=>'0','Next'=>'2'));
     }
 
     // Display Page from Pagination
@@ -62,7 +61,14 @@ class Blog extends Controller
                 return 'INTERNAL ERROR: 1';
             }
         }
-        return view('blog.posts')->with('postsdata', $postsdat);
+        $lastPage = $page - 1;
+        if (count($postsdat) == 5)
+        {
+            $nextPage = $page + 1;
+        } else {
+            $nextPage = '';
+        }
+        return view('blog.posts')->with('postsdata', $postsdat)->with('pagination', Array('Last'=>$lastPage,'Next'=>$nextPage));
     }
 
 
@@ -87,7 +93,6 @@ class Blog extends Controller
                 }
             }
         }
-
         return view('blog.home')->with('postsdata', $postsdat);
 
     }
