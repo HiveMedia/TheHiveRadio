@@ -52,7 +52,7 @@
 
 
         {!! Form::label('I Agree to all Terms and Conditions') !!}
-        {!! Form::checkbox('tos', $application['tos']) !!}
+        {!! Form::checkbox('tos',1, $application['tos']) !!}
         <br />
         @if(isset($read) != true)
         {!! Form::submit('submit') !!}

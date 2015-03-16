@@ -26,9 +26,9 @@
                                 <tr>
                                     <td>{{$application['handle']}} - {{$application['status']}}</td>
                                     <td>
-                                        {!! Html::link('admin/application/JUDGMENTDAY/'.$application['id'],'View') !!} |
-                                        {!! Html::link('admin/application/AwwWelcomeDude/'.$application['id'],'Approve') !!} |
-                                        {!! Html::link('admin/application/DENYFUCKER/'.$application['id'],'Reject') !!}
+                                        {!! Html::link('admin/application/staff/JUDGMENTDAY/'.$application['id'],'View') !!} |
+                                        {!! Html::link('admin/application/staff/AwwWelcomeDude/'.$application['id'],'Approve') !!} |
+                                        {!! Html::link('admin/application/staff/DENYFUCKER/'.$application['id'],'Reject') !!}
                                     </td>
                                 </tr>
                             @endforeach

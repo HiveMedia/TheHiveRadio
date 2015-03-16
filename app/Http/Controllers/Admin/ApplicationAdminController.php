@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Applications;
+use App\User;
 use Illuminate\Support\Facades\Mail;
 
 use Request;
@@ -19,7 +20,7 @@ class ApplicationAdminController extends Controller
     {
         if (\Auth::user()->IsRole('Admin')) {
             $application = Applications::all();
-            return view('admin.applications.index')->with('applicationsdata', $application->toArray());
+            return view('admin.applications.staff.index')->with('applicationsdata', $application->toArray());
         } else {
             $application = Applications::all()->where('user_id', \Auth::user()->id);
             if (isset($application[0])) {
@@ -43,13 +44,23 @@ class ApplicationAdminController extends Controller
 
     public  function approve($id)
     {
+        // Is user Logged in?
         if (\Auth::user()->IsRole('Admin')) {
+            // Find Application
             $application = Applications::find($id);
             if ($application != null) {
+                // Set to Approved
                 $application->status = '2';
                 $application->save();
+
+                // Set user as 'Staff'
+                $user = User::findOrNew($application->user_id);
+                $user->role = 'Editor';
+                $user->save();
+                dd($user. ' = '.$user->IsRole('Admin'));
+                // Send Congrats Email
                 $recipient = $application->email;
-                Mail::send('emails.applicationapprove', ['name' =>$application->firstname],
+                Mail::send('emails.staff.applicationapprove', ['name' =>$application->firstname],
                     function ($message) use ($recipient) {
                         $message->to($recipient)->subject('RE: Staff Application!')->bcc('admin@hivemedia.net.au');
                     }
@@ -73,7 +84,7 @@ class ApplicationAdminController extends Controller
                 $application->status = '3';
                 $application->save();
                 $recipient = $application->email;
-                Mail::send('emails.applicationdeny', ['name' =>$application->firstname],
+                Mail::send('emails.staff.applicationdeny', ['name' =>$application->firstname],
                     function ($message) use ($recipient) {
                         $message->to($recipient)->subject('RE: Staff Application!')->bcc('admin@hivemedia.net.au');
                     }

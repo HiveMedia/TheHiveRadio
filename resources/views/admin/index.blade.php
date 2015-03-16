@@ -44,12 +44,14 @@
                 <li>{!! Html::Link('admin/u/l','List Users') !!}</li>
             </ul>
         </div>
-        <h2>Application</h2>
+        <h2>Applications</h2>
 
         <div class="panel-body">
             <ul>
-                <li>{!! Html::Link('admin/application/l','List Applications') !!}</li>
+                <li>{!! Html::Link('admin/application/staff/l','List Staff Applications') !!}</li>
+                <li>{!! Html::Link('admin/application/show/l','List SHOW Applications') !!}</li>
             </ul>
         </div>
+
     </div>
 @endsection
