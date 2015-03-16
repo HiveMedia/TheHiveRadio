@@ -21,13 +21,14 @@ class Blog extends Controller
         if (isset($poster)) {
             $postdata['poster_name'] = $poster->name;
         } else {
-            return 'INTERNAL ERROR: 1';
+            // Well this get triggered if No Post lol
+            \App::abort(404, 'Not Found.');
         }
 
         if ($postdata->public == '0') {
             return view('blog.post')->with('post', $postdata);
         }
-        return 404;
+        \App::abort(404, 'Not Found.');
     }
 
     // Display first page of pagination

@@ -87,6 +87,8 @@ Route::get('s/{id}', [
 Route::get('/apply', 'FormController@applyus');
 Route::post('/apply', 'FormController@createapply');
 
+Route::get('/applyshow', 'FormController@applyshow');
+Route::post('/applyshow', 'FormController@createapplyshow');
 
 
 // Admin Stuff
@@ -94,6 +96,9 @@ Route::post('/apply', 'FormController@createapply');
 
 Route::get('admin', [
     'uses' => 'Admin\AdminController@index'
+]);
+Route::get('admin/whoami', [
+    'uses' => 'Admin\AdminController@whoami'
 ]);
 /*
  *  USER ADMIN
@@ -186,17 +191,31 @@ Route::get('admin/s/l', [
  * Application Admin
  */
 // List All Application
-Route::get('admin/application/l', [
+Route::get('admin/application/staff/l', [
     'uses' => 'Admin\ApplicationAdminController@index'
 ]);
-Route::get('admin/application/JUDGMENTDAY/{id}', [
+Route::get('admin/application/staff/JUDGMENTDAY/{id}', [
     'uses' => 'Admin\ApplicationAdminController@view'
 ])->where('id', '[0-9]+');
-Route::get('admin/application/AwwWelcomeDude/{id}', [
+Route::get('admin/application/staff/AwwWelcomeDude/{id}', [
     'uses' => 'Admin\ApplicationAdminController@approve'
 ])->where('id', '[0-9]+');
-Route::get('admin/application/DENYFUCKER/{id}', [
+Route::get('admin/application/staff/DENYFUCKER/{id}', [
     'uses' => 'Admin\ApplicationAdminController@deny'
+])->where('id', '[0-9]+');
+
+// List All Application
+Route::get('admin/application/show/l', [
+    'uses' => 'Admin\ShowApplicationAdminController@index'
+]);
+Route::get('admin/application/show/JUDGMENTDAY/{id}', [
+    'uses' => 'Admin\ShowApplicationAdminController@view'
+])->where('id', '[0-9]+');
+Route::get('admin/application/show/AwwWelcomeDude/{id}', [
+    'uses' => 'Admin\ShowApplicationAdminController@approve'
+])->where('id', '[0-9]+');
+Route::get('admin/application/show/DENYFUCKER/{id}', [
+    'uses' => 'Admin\ShowApplicationAdminController@deny'
 ])->where('id', '[0-9]+');
 
 

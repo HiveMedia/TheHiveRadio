@@ -16,7 +16,7 @@ class ShowsController extends Controller {
 	public function index()
 	{
 		//
-        $showsdata = RadioShows::all();
+        $showsdata = RadioShows::all()->where('public', '=', false);
         return view('shows.index')->with('showsdata',$showsdata->toArray());
 	}
 
@@ -47,9 +47,13 @@ class ShowsController extends Controller {
 	 * @return Response
 	 */
 	public function show($id)
-	{
-		//
+    {
+        //
         $showdata = RadioShows::find($id);
+        if ($showdata->public) {
+            \App::abort(404, 'Not Found.');
+        }
+
         return view('shows.show')->with('showdata',$showdata->toArray());
 	}
 
