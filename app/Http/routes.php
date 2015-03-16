@@ -97,9 +97,7 @@ Route::post('/applyshow', 'FormController@createapplyshow');
 Route::get('admin', [
     'uses' => 'Admin\AdminController@index'
 ]);
-Route::get('admin/whoami', [
-    'uses' => 'Admin\AdminController@whoami'
-]);
+
 /*
  *  USER ADMIN
  */
