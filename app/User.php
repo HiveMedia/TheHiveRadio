@@ -65,6 +65,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * * That's it
      */
     public function IsRole($role){
+
         switch ($role)
         {
             case 'Admin': // Satan level power
@@ -72,26 +73,36 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 {
                     return true;
                 }
+                break;
+
             case 'showHost': // Cancel their Show, Post to Blog
                 if ($this->role == 'Admin' || $this->role == 'showHost')
                 {
                      return true;
                  }
+                break;
+
             case 'showStaff': // Edit their own Show
                 if ($this->role == 'Admin' || $this->role == 'showHost'|| $this->role == 'showStaff')
                 {
                     return true;
                 }
+                break;
+
             case 'Editor': // Blog Stuff
                 if ($this->role == 'Admin' || $this->role == 'showHost' || $this->role == 'Editor')
                 {
                     return true;
                 }
+                    echo 'commTest';
+                break;
+
             case 'Commenter': // Blog Stuff
                 if ($this->role == 'Admin' || $this->role == 'showHost' || $this->role == 'Editor')
                 {
                     return true;
                 }
+                break;
         }
         return false;
     }
