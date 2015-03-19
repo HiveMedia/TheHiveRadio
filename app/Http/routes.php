@@ -180,6 +180,17 @@ Route::get('admin/s/d/{id}', [
 Route::get('admin/s/dc/{id}', [
     'uses' => 'Admin\ShowAdminController@DeleteShow'
 ])->where('id', '[0-9]+');
+// Upload Show
+Route::get('admin/s/u/{id}', [
+    'uses' => 'Admin\ShowAdminController@uploadshow'
+])->where('id', '[0-9]+');
+Route::post('admin/s/u/{id}', [
+    'uses' => 'Admin\ShowAdminController@uploadshowfiles'
+]);
+// list uploaded Shows
+Route::get('admin/s/s/{id}', [
+    'uses' => 'Admin\ShowAdminController@listshoweps'
+])->where('id', '[0-9]+');
 // List All Show
 Route::get('admin/s/l', [
     'uses' => 'Admin\ShowAdminController@index'
