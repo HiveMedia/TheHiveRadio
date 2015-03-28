@@ -6,7 +6,7 @@
                     <hr />
 
                     <div class="panel-body">
-                    {!! Form::open() !!}
+                    {!! Form::open(array('files'=>1)) !!}
 
                         {!! Form::label('title') !!}
                         {!! Form::text('title', $postdata['title'], ['class' => 'imacssclass']) !!}
@@ -16,6 +16,7 @@
                         <br />
                         {!! Form::label('image_url') !!}
                         {!! Form::text('image_url', $postdata['image_url']) !!}
+                        {!! Form::file('image') !!}
                         <br />
                         {!! Form::label('Private') !!}
                         {!! Form::checkbox('public', $postdata['public']) !!}

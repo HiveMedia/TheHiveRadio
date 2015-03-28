@@ -3,8 +3,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\RadioShows;
+use App\ShowEps;
 
 use Request;
+use DB;
 
 class ShowAdminController extends Controller
 {
@@ -17,7 +19,11 @@ class ShowAdminController extends Controller
     public function index()
     {
         if (\Auth::user()->IsRole('showHost')) {
-            $postsdata = RadioShows::all();
+            if (\Auth::user()->IsRole('Admin')) {
+                $postsdata = RadioShows::all();
+            } else {
+                $postsdata = RadioShows::all()->where('host_id', \Auth::user()->id);
+            }
             return view('admin.show.index')->with('postsdata', $postsdata->toArray());
         } else {
             return '403 Permission Denied';
@@ -29,7 +35,12 @@ class ShowAdminController extends Controller
     {
         if (\Auth::user()->IsRole('showHost')) {
             $postdata = RadioShows::find($id);
-            return view('admin.show.edit')->with('postdata', $postdata->toArray());
+            if ($postdata->host_id == \Auth::user()->id) {
+                return view('admin.show.edit')->with('postdata', $postdata->toArray());
+            }
+            if (\Auth::user()->IsRole('Admin')) {
+                return view('admin.show.edit')->with('postdata', $postdata->toArray());
+            }
         } else {
             return '403 Permission Denied';
         }
@@ -38,10 +49,17 @@ class ShowAdminController extends Controller
     public function update($id)
     {
         if (\Auth::user()->IsRole('showHost')) {
-
             $input = Request::all();
-            $post = RadioShows::findOrNew($id);
+            $icon = Request::file('icon');
+            $banner = Request::file('banner');
 
+            $post = RadioShows::findOrNew($id);
+            if ($post->host_id != \Auth::user()->id) {
+                if (\Auth::user()->IsRole('Admin') != true) {
+                    return '403 Permission Denied';
+
+                }
+            }
             $post->title = $input['title'];
             $post->description = $input['description'];
             $post->description_short = $input['description_short'];
@@ -50,8 +68,21 @@ class ShowAdminController extends Controller
             } else {
                 $post->public = false;
             }
-            $post->icon_url = $input['icon_url'];
-            $post->banner_url = $input['banner_url'];
+
+            if ($icon) {
+                $iconName = $icon->getClientOriginalName();
+                $post->icon_url = '/img/show/icon/' . $iconName;
+                $icon->move(public_path() . '/img/show/icon/', $iconName);
+            } else {
+                $post->icon_url = $input['icon_url'];
+            }
+            if ($banner) {
+                $bannerName = $banner->getClientOriginalName();
+                $post->banner_url = '/img/show/banner/' . $bannerName;
+                $banner->move(public_path() . '/img/show/banner/', $bannerName);
+            } else {
+                $post->banner_url = $input['banner_url'];
+            }
 
             $post->save();
             return view('admin.success');
@@ -59,6 +90,78 @@ class ShowAdminController extends Controller
             return '403 Permission Denied';
         }
     }
+
+    public function listshoweps($id)
+    {
+        if (\Auth::user()->IsRole('Admin')) {
+            $show = RadioShows::find($id);
+            $eps = $show->myeps()->getResults()->all();
+            //$eps = ShowEps::all()->where('show_id',$id);
+            //$eps = $eps[0]->toArray();
+            $eps_array = array();
+            foreach ($eps as $ep)
+            {
+//                dd($ep->toArray());
+                $eps_array[]=$ep->toArray();
+            }
+            return view('admin.show.eps')->with('show', $show)->with('eps',$eps_array);
+        } else {
+            return '403 Permission Denied';
+        }
+    }
+
+    public function uploadshow($id)
+    {
+        if (\Auth::user()->IsRole('showHost')) {
+            $show = RadioShows::find($id);
+            $user = DB::table('show_staff')->where('user_id', \Auth::user()->id)->lists('show_id');
+            if (is_array($user) && $show) {
+                if (in_array($show->id, $user)) {
+                    return view('admin.show.upload')->with('show', $show);
+                }
+            }
+        }
+        if (\Auth::user()->IsRole('Admin')) {
+            $show = RadioShows::find($id);
+            if ($show) {
+                return view('admin.show.upload')->with('show', $show);
+            }
+        } else {
+            return '403 Permission Denied';
+        }
+    }
+
+    public function uploadshowfiles()
+    {
+        $input = Request::all();
+        $ep = Request::file('ep');
+        $epName = $ep->getClientOriginalName();
+        $newFileName = str_random(20) . '-' . $epName;
+
+        if (\Auth::user()->IsRole('showHost')) {
+            $show = RadioShows::find($input['show_id']);
+            $user = DB::table('show_staff')->where('user_id', \Auth::user()->id)->lists('show_id');
+            if (is_array($user) && $show) {
+                if (in_array($show->id, $user)) {
+                    $input->URL = '/shows/' . $input['show_id'] . '/upload/' . $newFileName;
+                    $ep->move(public_path() . '/shows/' . $input['show_id'] . '/upload/', $newFileName);
+                    ShowEps::create($input);
+                    return view('admin.success');
+                }
+            }
+        }
+
+        if (\Auth::user()->IsRole('Admin')) {
+            $input['URL'] = '/shows/' . $input['show_id'] . '/upload/' . $newFileName;
+            $ep->move(public_path() . '/shows/' . $input['show_id'] . '/upload/', $newFileName);
+            ShowEps::create($input);
+            return view('admin.success');
+        } else {
+            return '403 Permission Denied';
+
+        }
+    }
+
 
     public function create()
     {
@@ -72,19 +175,19 @@ class ShowAdminController extends Controller
     public function createShow()
     {
         if (\Auth::user()->IsRole('Admin')) {
-            $icon  = Request::file('icon');
-            $banner  = Request::file('banner');
+            $icon = Request::file('icon');
+            $banner = Request::file('banner');
             $input = Request::all();
             $iconName = $icon->getClientOriginalName();
-            $input['icon_url'] = '/img/show/icon/'.$iconName;
+            $input['icon_url'] = '/img/show/icon/' . $iconName;
             $bannerName = $banner->getClientOriginalName();
-            $input['banner_url'] = '/img/show/banner/'.$bannerName;
+            $input['banner_url'] = '/img/show/banner/' . $bannerName;
 
 
             // $input['poster_id'] = \Auth::user()->id;
             RadioShows::create($input);
-            $icon->move(public_path().'/img/show/icon/', $iconName);
-            $banner->move(public_path().'/img/show/banner/', $bannerName);
+            $icon->move(public_path() . '/img/show/icon/', $iconName);
+            $banner->move(public_path() . '/img/show/banner/', $bannerName);
 
             return view('admin.success');
         } else {

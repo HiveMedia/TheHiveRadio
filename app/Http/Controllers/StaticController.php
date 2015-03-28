@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class StaticController extends Controller
@@ -45,7 +46,14 @@ class StaticController extends Controller
 
     public function staffus()
     {
-        return view('static.staff');
+        $Admin = User::all()->where('role','Admin');
+        $Admin = $Admin->where('public',0);
+
+        $SH = User::all()->where('role','showHost');
+        $SH = $SH->where('public',0);
+        $staff=array_merge($Admin->toArray(), $SH->toArray());
+
+        return view('static.staff')->with('staff', $staff);
     }
 
 

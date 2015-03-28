@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\RadioShows;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class ShowsController extends Controller {
@@ -16,7 +18,7 @@ class ShowsController extends Controller {
 	public function index()
 	{
 		//
-        $showsdata = RadioShows::all();
+        $showsdata = RadioShows::all()->where('public', '=', false);
         return view('shows.index')->with('showsdata',$showsdata->toArray());
 	}
 
@@ -47,10 +49,22 @@ class ShowsController extends Controller {
 	 * @return Response
 	 */
 	public function show($id)
-	{
-		//
+    {
+        //
         $showdata = RadioShows::find($id);
-        return view('shows.show')->with('showdata',$showdata->toArray());
+        if ($showdata->public) {
+            \App::abort(404, 'Not Found.');
+        }
+        $peeps = DB::select('select * from show_staff where show_id = ?', [$id]);
+        foreach($peeps as $peep)
+        {
+            $people=array();
+            $tmp = User::find($peep->user_id);
+            if (!$tmp->public) {
+                $people[] = $tmp;
+            }
+        }
+        return view('shows.show')->with('showdata',$showdata->toArray())->with('people',$people);
 	}
 
 	/**

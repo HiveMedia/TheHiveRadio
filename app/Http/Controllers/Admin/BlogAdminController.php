@@ -40,8 +40,16 @@ class BlogAdminController extends Controller
         if (\Auth::user()->IsRole('Editor')) {
 
             $input = Request::all();
-            $post = Posts::findOrNew($id);
+            $file  = Request::file('image');
 
+            $post = Posts::findOrNew($id);
+            if ($file)
+            {
+                $fileName = $file->getClientOriginalName();
+                $input['image_url'] = '/img/blog/'.$fileName;
+                $file->move(public_path().'/img/blog/', $fileName);
+            }
+            $post->image_url = $input['image_url'];
             $post->title = $input['title'];
             $post->body = $input['body'];
             if (isset($input['public'])) {
@@ -49,8 +57,6 @@ class BlogAdminController extends Controller
             } else {
                 $post->public = false;
             }
-            $post->image_url = $input['image_url'];
-
             $post->save();
             return view('admin.success');
         } else {

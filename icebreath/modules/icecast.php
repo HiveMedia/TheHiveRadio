@@ -5,7 +5,7 @@ use Icebreath\Response;
 
 class icecast extends Module {
 
-    private $VERSION = "0.1.0";
+    private $VERSION = "0.1.1";
 
     /**
      * Asks the module to handle a PUT (Create) request
@@ -139,14 +139,7 @@ class icecast extends Module {
 
         foreach($data->source as $mount_point)
         {
-            $server_data->server_listeners_peak += (int)$mount_point->listener_peak;
-            if($mount_point->max_listeners == "unlimited")
-                $server_data->server_listeners_max =  -1;
-            else
-                $server_data->server_listeners_max += (int)$mount_point->max_listeners;
-            $unique_listeners = $this->getUniqueListenersOnMount((string)$mount_point["mount"]);
-            $server_data->server_listeners_unique += $unique_listeners;
-
+ 
             $ignore_this_mount = false;
             foreach(\Config::get('icebreath.icecast.mount_point_ignore') as $id => $ignore_mount) {
                 if((string)$mount_point["mount"] == $ignore_mount) {
@@ -160,6 +153,14 @@ class icecast extends Module {
 
             if(!empty($mount_point_name) && str_replace('/', '', $mount_point["mount"]) != $mount_point_name)
                 continue;
+
+           $server_data->server_listeners_peak += (int)$mount_point->listener_peak;
+            if($mount_point->max_listeners == "unlimited")
+                $server_data->server_listeners_max =  -1;
+            else
+                $server_data->server_listeners_max += (int)$mount_point->max_listeners;
+            $unique_listeners = $this->getUniqueListenersOnMount((string)$mount_point["mount"]);
+            $server_data->server_listeners_unique += $unique_listeners;
 
             if($mount_point->source_ip == null)
             {

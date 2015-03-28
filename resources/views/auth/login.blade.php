@@ -27,6 +27,11 @@
 
             <br>
 
+            Don't got a login? No, worries Register <a href="{{URL::to('auth/register')}}">here.</a><br/>
+            Forgotten Password? Reset it  <a href="{{URL::to('password/email')}}">here.</a>
+
+            <br>
+
             <button type="submit" class="login-form-submit">Login</button>
         </form>
     </div>
