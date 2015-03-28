@@ -15,7 +15,7 @@
                                 <td>
                                     {{$ep['description']}}<br>
                                     {{$ep['releasedate']}}<br>
-                                    <a href="{{URL::to(URL)}}">URL</a>
+                                    <a href="{{URL::to($ep['URL'])}}">URL{{$ep['URL']}}</a>
                                 </td>
                                 </tr>
                         @endforeach

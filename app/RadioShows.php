@@ -26,4 +26,8 @@ class RadioShows extends Model {
     {
         dd($this->id);
     }
+    public function myeps()
+    {
+        return $this->hasMany('App\ShowEps','show_id','id');
+    }
 }

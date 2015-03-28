@@ -95,8 +95,16 @@ class ShowAdminController extends Controller
     {
         if (\Auth::user()->IsRole('Admin')) {
             $show = RadioShows::find($id);
-            $eps = ShowEps::all()->where('show_id',$id);
-            return view('admin.show.eps')->with('show', $show)->with('eps',$eps);
+            $eps = $show->myeps()->getResults()->all();
+            //$eps = ShowEps::all()->where('show_id',$id);
+            //$eps = $eps[0]->toArray();
+            $eps_array = array();
+            foreach ($eps as $ep)
+            {
+//                dd($ep->toArray());
+                $eps_array[]=$ep->toArray();
+            }
+            return view('admin.show.eps')->with('show', $show)->with('eps',$eps_array);
         } else {
             return '403 Permission Denied';
         }
@@ -136,7 +144,7 @@ class ShowAdminController extends Controller
             if (is_array($user) && $show) {
                 if (in_array($show->id, $user)) {
                     $input->URL = '/shows/' . $input['show_id'] . '/upload/' . $newFileName;
-                    $ep->move(public_path() . '/shows/' . $input['show_id'] . '/upload/' . $newFileName, $newFileName);
+                    $ep->move(public_path() . '/shows/' . $input['show_id'] . '/upload/', $newFileName);
                     ShowEps::create($input);
                     return view('admin.success');
                 }
@@ -145,7 +153,7 @@ class ShowAdminController extends Controller
 
         if (\Auth::user()->IsRole('Admin')) {
             $input['URL'] = '/shows/' . $input['show_id'] . '/upload/' . $newFileName;
-            $ep->move(public_path() . '/shows/' . $input['show_id'] . '/upload/' . $newFileName, $newFileName);
+            $ep->move(public_path() . '/shows/' . $input['show_id'] . '/upload/', $newFileName);
             ShowEps::create($input);
             return view('admin.success');
         } else {
