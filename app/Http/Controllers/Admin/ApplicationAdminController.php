@@ -57,7 +57,6 @@ class ApplicationAdminController extends Controller
                 $user = User::findOrNew($application->user_id);
                 $user->role = 'Editor';
                 $user->save();
-                dd($user. ' = '.$user->IsRole('Admin'));
                 // Send Congrats Email
                 $recipient = $application->email;
                 Mail::send('emails.staff.applicationapprove', ['name' =>$application->firstname],
