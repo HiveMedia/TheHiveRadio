@@ -5,7 +5,7 @@ use Icebreath\Response;
 
 class icecast extends Module {
 
-    private $VERSION = "0.1.0";
+    private $VERSION = "0.1.1";
 
     /**
      * Asks the module to handle a PUT (Create) request
