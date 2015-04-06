@@ -28,6 +28,7 @@ class IcebreathController extends Controller {
      */
     public function module()
     {
+        $CacheKey=\Request::path();
         $requestPath = str_replace('icebreath/', '' , \Request::path());
         $requestMethod = \Request::method();
 
@@ -42,41 +43,40 @@ class IcebreathController extends Controller {
             $resp = array('status' => 'error', 'error' => "Module [$moduleName] was not found", 'timestamp' => time());
             return response($resp, 404);
         }
-        if (Cache::has($moduleView. $args. $requestMethod)) {
-            $resp = Cache::get($moduleView. $args. $requestMethod);
+        if (Cache::has($CacheKey)) {
+            $builtResp = Cache::get($CacheKey);
         } else {
             $moduleClass = new $moduleClass();
             $resp = $moduleClass->getModuleResponse($moduleView, $args, $requestMethod);
-            $expiresAt = Carbon::now()->addMinutes(1);
-            Cache::put($moduleView.$args.$requestMethod, $resp, $expiresAt);
-
-        }
-        if($resp->hasErrored()) {
-            return response(
-                array('status' => 'error', 'error' => $resp->getError(), 'timestamp' => time()),
-                $resp->getHTTPCode()
-            );
-        } else {
-            $builtResp = null;
-
-            if($resp->getResponseType() == "application/json") {
-                $builtResp = response(
-                    array('status' => 'successful', 'result' => $resp->getOutput(), 'timestamp' => time()),
+            if($resp->hasErrored()) {
+                return response(
+                    array('status' => 'error', 'error' => $resp->getError(), 'timestamp' => time()),
                     $resp->getHTTPCode()
                 );
             } else {
-                $builtResp = response(
-                    $resp->getOutput(),
-                    $resp->getHTTPCode()
-                );
+                $builtResp = null;
+
+                if($resp->getResponseType() == "application/json") {
+                    $builtResp = response(
+                        array('status' => 'successful', 'result' => $resp->getOutput(), 'timestamp' => time()),
+                        $resp->getHTTPCode()
+                    );
+                } else {
+                    $builtResp = response(
+                        $resp->getOutput(),
+                        $resp->getHTTPCode()
+                    );
+                }
+
+                foreach($resp->getHeaders() as $key => $value) {
+                    $builtResp->header($key, $value);
+                }
+                $expiresAt = Carbon::now()->addMinutes(1);
+                Cache::put($CacheKey, $builtResp, $expiresAt);
             }
 
-            foreach($resp->getHeaders() as $key => $value) {
-                $builtResp->header($key, $value);
-            }
-
-            return $builtResp;
         }
+        return $builtResp;
     }
 
 }
