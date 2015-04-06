@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
+use Cache;
+use Carbon\Carbon;
 
 class IcebreathController extends Controller {
 
@@ -40,10 +42,15 @@ class IcebreathController extends Controller {
             $resp = array('status' => 'error', 'error' => "Module [$moduleName] was not found", 'timestamp' => time());
             return response($resp, 404);
         }
+        if (Cache::has($moduleView. $args. $requestMethod)) {
+            $resp = Cache::get($moduleView. $args. $requestMethod);
+        } else {
+            $moduleClass = new $moduleClass();
+            $resp = $moduleClass->getModuleResponse($moduleView, $args, $requestMethod);
+            $expiresAt = Carbon::now()->addMinutes(1);
+            Cache::put($moduleView.$args.$requestMethod, $resp, $expiresAt);
 
-        $moduleClass = new $moduleClass();
-        $resp = $moduleClass->getModuleResponse($moduleView, $args, $requestMethod);
-
+        }
         if($resp->hasErrored()) {
             return response(
                 array('status' => 'error', 'error' => $resp->getError(), 'timestamp' => time()),

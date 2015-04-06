@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Posts;
 use App\User;
+use Cache;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
@@ -10,6 +12,11 @@ use SebastianBergmann\Comparator\ArrayComparatorTest;
 
 class Blog extends Controller
 {
+    public function clearCache()
+    {
+        Cache::forget('Blog_Pageone');
+
+    }
 
     // Display Single Post
     public function post($id)
@@ -34,17 +41,25 @@ class Blog extends Controller
     // Display first page of pagination
     public function pageone()
     {
-        $postsdata = Posts::all()->sortBy('id')->where('public', '=', false)->forPage(1, 5);
-        foreach ($postsdata as $post) {
-            $postsdat[$post['id']] = $post;
-            $poster = User::find($post['poster_id']);
 
-            if (isset($poster)) {
-                $postsdat[$post['id']]['poster_name'] = $poster->name;
-            } else {
-                return 'INTERNAL ERROR: 1';
+        if (Cache::has('Blog_Pageone')) {
+            $postsdat = Cache::get('Blog_Pageone');
+        } else {
+            $postsdata = Posts::all()->sortBy('id')->where('public', '=', false)->forPage(1, 5);
+            foreach ($postsdata as $post) {
+                $postsdat[$post['id']] = $post;
+                $poster = User::find($post['poster_id']);
+
+                if (isset($poster)) {
+                    $postsdat[$post['id']]['poster_name'] = $poster->name;
+                } else {
+                    return 'INTERNAL ERROR: 1';
+                }
             }
+            $expiresAt = Carbon::now()->addMinutes(5);
+            Cache::put('Blog_Pageone', $postsdat, $expiresAt);
         }
+
         return view('blog.posts')->with('postsdata', $postsdat)->with('pagination', Array('Last'=>'0','Next'=>'2'));
     }
 
