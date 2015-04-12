@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="THR">
 	<head>
 		<meta name="tags" content="pony,ponys,fur,furs,mlp,fim,music,radio,hive,media,changeling,fandom">
 		<meta name="author" content="Hive Media Productions">
@@ -14,6 +14,11 @@
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
 
         <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+		<script src="http://code.angularjs.org/1.2.3/angular.js"></script>
+		<script src="http://code.angularjs.org/1.2.3/angular-route.js"></script>
+		<script src="{{URL::to('/')}}/js/thr.js"></script>
+
 	</head>
 	
 	<body>
@@ -24,19 +29,20 @@
 					<img src="{{URL::to('/')}}/img/logo.png">
 				</div>
 
-                <div class="site-player-container grid_6 text-center">
-                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/UnknownArtistCoverPlease"/>
+                <div class="site-player-container grid_6 text-center" ng-app="THR" ng-controller="nowPlayingController">
+                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/<% Artist %>" ng-click="openArtist()"/>
 
                     <h2>Now Playing On The Hive Radio</h2>
 
                     <strong>
-                        <span class="nowplaying-song">Loading station data ...</span>
+                        <span class="nowplaying-song"><% Song %></span>
                     </strong>
 
                     <br>
 
-                    <span class="nowplaying-artist">Please wait</span> <br>
-                    <strong>There are <span class="nowplaying-listener-count">0</span> listeners tuned in</strong>
+                    <span class="nowplaying-artist"><% Artist %>
+					</span> <br>
+                    <strong>There are <span class="nowplaying-listener-count"><% ListenerCount %></span> listeners tuned in</strong>
 
                     <div class="player-container-player">
                         <ul class="player-menu">
@@ -65,7 +71,6 @@
                         <audio id="player" src="https://hiveradio.net/normal.mp3"></audio>
                     </div>
 
-                    <script src="{{URL::to('/')}}/js/now-playing-ajax.js"></script>
                 </div>
 			</div>
 		</header>
@@ -128,14 +133,7 @@
 				Copyright &copy; Hive Media Productions, 2013-15. All rights reserved. All multimedia content is property of its respective author(s). The Hive Radio is a Non-for-profit station, any and all ad and donation money is used solely for keeping the station online.
 			</p>
 			<p class="third">
-				<img height="40" src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/by-nc-nd.eu.png"> 
-				<img src="https://hiveradio.net/wp-content/themes/The%20Hive%20Radio/images/comodo_secure_100x85_transp.png"> 
-				<a href="http://www.internet-radio.com/" target="_blank">
-					<img src="http://www.internet-radio.com/images/internet-radio-badge.gif">
-				</a> 
-				<a href="http://www.streamfinder.com" target="_blank">
-					<img src="http://www.streamfinder.com/images/streamfinder-icon.gif" border="0" alt="StreamFinder - the free place to list your streaming show.">
-				</a>
+
 			</p>
 			<p class="third">
 				<img width="250px"src="http://hivemedia.net.au/images/logo.png">
