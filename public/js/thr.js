@@ -39,12 +39,15 @@ thr.controller('nowPlayingController', function ($scope, $http, $interval) {
                     $scope.LastPlayed = data.result.server_streams[0].stream_nowplaying.text;
 
                     var options = {
-                        body: 'Hive Radio:' + data.result.server_streams[0].stream_nowplaying.text,
+                        body: data.result.server_streams[0].stream_nowplaying.text,
                         icon: "/icebreath/covers/" + $scope.Artist,
                         dir: "ltr"
                     };
                     if (Notification.permission === "granted") {
-                        var notify = new Notification('Now Playing', options);
+                        var notify = new Notification('Hive Radio - Now Playing', options);
+                        setTimeout(function(){
+                            notify.close();
+                        }, 3000);
                     }
                 }
                 if (Notification.permission !== 'denied') {

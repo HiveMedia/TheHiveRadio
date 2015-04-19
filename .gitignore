@@ -10,3 +10,4 @@ vendor/
 *.phar
 public/img/blog/
 .vagrant/
+resources/assets/bower/
