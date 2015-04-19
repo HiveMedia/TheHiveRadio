@@ -13,10 +13,8 @@
 		<link href="{{URL::to('/')}}/css/960.css" type="text/css" rel="stylesheet">
 		<link href="{{URL::to('/')}}/css/style.css" type="text/css" rel="stylesheet">
 
-        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="{{ asset('/js/vendor.js') }}"></script>
 
-		<script src="http://code.angularjs.org/1.2.3/angular.js"></script>
-		<script src="http://code.angularjs.org/1.2.3/angular-route.js"></script>
 		<script src="{{URL::to('/')}}/js/thr.js"></script>
 
 	</head>

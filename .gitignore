@@ -11,3 +11,5 @@ vendor/
 public/img/blog/
 .vagrant/
 resources/assets/bower/
+node_modules/
+public/js/vendor.*
