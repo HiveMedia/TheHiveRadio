@@ -122,6 +122,24 @@ Route::get('admin/shout/d', [
 Route::get('admin/shout/bot/skip', [
     'uses' => 'Admin\ShoutBotAdminController@SkipSong'
 ]);
+Route::get('admin/shout/bot/stop', [
+    'uses' => 'Admin\ShoutBotAdminController@AutoDJPlayOut'
+]);
+Route::get('admin/shout/bot/start', [
+    'uses' => 'Admin\ShoutBotAdminController@AutoDJStart'
+]);
+Route::get('admin/shout/bot/KILL', [
+    'uses' => 'Admin\ShoutBotAdminController@AutoDJKill'
+]);
+Route::get('admin/shout/bot/rehash', [
+    'uses' => 'Admin\ShoutBotAdminController@AutoDJReload'
+]);
+Route::get('admin/shout/bot/RESTART', [
+    'uses' => 'Admin\ShoutBotAdminController@restart'
+]);
+Route::get('admin/shout/bot/KILL', [
+    'uses' => 'Admin\ShoutBotAdminController@KILL'
+]);
 Route::get('admin/shout/bot/relay', [
     'uses' => 'Admin\ShoutBotAdminController@relay'
 ]);

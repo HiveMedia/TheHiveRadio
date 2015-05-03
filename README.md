@@ -36,12 +36,13 @@ Our website and development environment is built off the following technologies:
 * `php artisan migrate`
 * `php artisan db:seed`
 This will create the following default accounts:
-Username , Password
-'admin@local.host', 'admin'
-'showHost@local.host', 'showHost'
-'showStaff@local.host', 'showStaff'
-'Editor@local.host', 'Editor'
-'Commenter@local.host', 'Commenter'
+
+    Username , Password
+    'admin@local.host', 'admin'
+    'showHost@local.host', 'showHost'
+    'showStaff@local.host', 'showStaff'
+    'Editor@local.host', 'Editor'
+    'Commenter@local.host', 'Commenter'
 
 
 ## Config

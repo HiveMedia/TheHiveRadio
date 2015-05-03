@@ -12,6 +12,7 @@ class ShoutBotAdminController extends Controller
 
     public function __construct()
     {
+        $this->middleware('auth');
         $host = ENV('ShoutIRC_HOST');
         $port = ENV('ShoutIRC_PORT');
         $username = ENV('ShoutIRC_USER');
@@ -21,140 +22,231 @@ class ShoutBotAdminController extends Controller
 
     }
 
+    // Completed
+    // Display ShoutIRC management
     public function index()
     {
-        return view('admin.shout');
-
-    }
-    public function data()
-    {
-        $result = array();
-        $flags = $this->bot->getSourceName();
-        $result['Source'] = $flags;
-
-        $flags = $this->bot->queryStream();
-        $result['Stream']['title'] = $flags->getTitle();
-        $result['Stream']['dj'] = $flags->getDj();
-        $result['Stream']['listeners'] = $flags->getListeners();
-        $result['Stream']['peak'] = $flags->getPeak();
-        $result['Stream']['max'] = $flags->getMax();
-        $flags = $this->bot->getSourceSong();
-
-        $result['SongFileName']=$flags;
-
-        $flags = $this->bot->getSourceStatus();
-        $result['Status']=$flags;
-
-        $flags = $this->bot->querySong();
-        $result['Song']['Title']=$flags->getTitle();
-        $result['Song']['Artist']=$flags->getArtist();
-        $result['Song']['Album']=$flags->getAlbum();
-        $result['Song']['Genre']=$flags->getGenre();
-
-        $result['Song']['FileID']=$flags->getFileID();
-        $result['Song']['FileName']=$flags->getFileName();
-        $result['Song']['SongLength']=$flags->getSongLength();
-
-        $result['Song']['PlayBackLength']=$flags->getPlayBackLength();
-        $result['Song']['PlayBackPosition']=$flags->getPlayBackPosition();
-        $result['Song']['WasRequested']=$flags->getWasRequested();
-        $result['Song']['Requester']=$flags->getRequester();
-        return $result;
-    }
-
-    // Completed API
-    public function SkipSong()
-    {
-        $flags = $this->bot->skipSourceSong();
-        if ($flags == null)
-        {
-            return array('Result'=>'Success');
+        if (\Auth::user()->IsRole('showStaff')) {
+            return view('admin.shout');
         } else {
-            return array('Result'=>'Error');
+            \App::abort(403, 'Not Authorized.');
         }
 
     }
-    //TODO: Fix this
-    public function relay()
-    {
-        dd($this->bot->autodjRelay('https://hiveradio.net/shows/2/upload/KoH5b2SLsLRmtnRCH76C-IBAIP-Episode-23.mp3'));
 
+    // Display bot status as JSON
+    public function data()
+    {
+        if (\Auth::user()->IsRole('showStaff')) {
+            $result = array();
+            $flags = $this->bot->getSourceName();
+            $result['Source'] = $flags;
+
+            $flags = $this->bot->queryStream();
+            $result['Stream']['title'] = $flags->getTitle();
+            $result['Stream']['dj'] = $flags->getDj();
+            $result['Stream']['listeners'] = $flags->getListeners();
+            $result['Stream']['peak'] = $flags->getPeak();
+            $result['Stream']['max'] = $flags->getMax();
+            $flags = $this->bot->getSourceSong();
+
+            $result['SongFileName'] = $flags;
+
+            $flags = $this->bot->getSourceStatus();
+            $result['Status'] = $flags;
+            if ($result['Source'] == 'autodj') {
+                $flags = $this->bot->querySong();
+                $result['Song']['Title'] = $flags->getTitle();
+                $result['Song']['Artist'] = $flags->getArtist();
+                $result['Song']['Album'] = $flags->getAlbum();
+                $result['Song']['Genre'] = $flags->getGenre();
+
+                $result['Song']['FileID'] = $flags->getFileID();
+                $result['Song']['FileName'] = $flags->getFileName();
+                $result['Song']['SongLength'] = $flags->getSongLength();
+
+                $result['Song']['PlayBackLength'] = $flags->getPlayBackLength();
+                $result['Song']['PlayBackPosition'] = $flags->getPlayBackPosition();
+                $result['Song']['WasRequested'] = $flags->getWasRequested();
+                $result['Song']['Requester'] = $flags->getRequester();
+            } else {
+                $result['Song']['Title'] = 'Not Playing';
+                $result['Song']['Artist'] = '';
+                $result['Song']['Album'] = '';
+                $result['Song']['Genre'] = '';
+
+                $result['Song']['FileID'] = '';
+                $result['Song']['FileName'] = 'Not Playing';
+                $result['Song']['SongLength'] = '0';
+
+                $result['Song']['PlayBackLength'] = '0';
+                $result['Song']['PlayBackPosition'] = '0';
+                $result['Song']['WasRequested'] = '';
+                $result['Song']['Requester'] = '';
+            }
+            return $result;
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
+
+    // Completed API
+    // Skip Current Song
+    public function SkipSong()
+    {
+        if (\Auth::user()->IsRole('Admin')) {
+            $flags = $this->bot->skipSourceSong();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
 
     }
+
+    // I stop the AutoDJ after this song
+    public function AutoDJPlayOut()
+    {
+        if (\Auth::user()->IsRole('showHost')) {
+            $flags = $this->bot->countdownSource();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
+
+    // I Start the AutoDJ
+    public function AutoDJStart()
+    {
+        if (\Auth::user()->IsRole('showHost')) {
+            $flags = $this->bot->forceSourceOn();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
+
+    // I Forcibly Stop the AutoDJ
+    public function AutoDJKill()
+    {
+        if (\Auth::user()->IsRole('showHost')) {
+            $flags = $this->bot->forceSourceOff();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
+
+    // I Forcibly Stop the AutoDJ
+    public function AutoDJReload()
+    {
+        if (\Auth::user()->IsRole('Admin')) {
+            $flags = $this->bot->reloadSource();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
+
+    // I relay the BASE64 URL/Filepath I'm given
     public function relayURL($path)
     {
-        $url = base64_decode($path);
-        dd($this->bot->autodjRelay($url));
+        if (\Auth::user()->IsRole('showHost')) {
+            $url = base64_decode($path);
+            $flags = $this->bot->autodjRelay($url);
+            if ($flags) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
     }
 
+
+    // I restart ShoutIRC
+    public function restart()
+    {
+        if (\Auth::user()->IsRole('Admin')) {
+            $flags = $this->bot->restartBot();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
+
+    // I KILL ShoutIRC THIS IS UNRECOVERABLE
+    public function KILL()
+    {
+        if (\Auth::user()->IsRole('Admin')) {
+            $flags = $this->bot->killBot();
+            if ($flags == null) {
+                return array('Result' => 'Success');
+            } else {
+                return array('Result' => 'Error');
+            }
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
+    }
 
 
     // TODO: Complete this shit
-    // God Powers
-    public function restart()
-    {
-        $flags = $this->bot->restartBot();
-        dd($flags);
-    }
 
-    public function kill()
+    public function relay()
     {
-        $flags = $this->bot->killBot();
-        dd($flags);
+        if (\Auth::user()->IsRole('Admin')) {
+            dd($this->bot->autodjRelay('https://hiveradio.net/shows/2/upload/KoH5b2SLsLRmtnRCH76C-IBAIP-Episode-23.mp3'));
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
 
     }
 
-
-    // AutoDJ
-    public function AutoDJPlayOut()
-    {
-        $flags = $this->bot->countdownSource();
-        dd($flags);
-    }
-    public function AutoDJKill()
-    {
-        $flags = $this->bot->forceSourceOff();
-        dd($flags);
-    }
-    public function AutoDJStart()
-    {
-        $flags = $this->bot->forceSourceOn();
-        dd($flags);
-    }
-    public function AutoDJReload()
-    {
-        $flags = $this->bot->reloadSource();
-        dd($flags);
-    }
 
     public function request($track)
     {
-        $flags = $this->bot->sendRequest($track);
-        dd($flags);
-    }
-
-    public function NowPlaying()
-    {
-        $flags = $this->bot->getSourceSong();
-        dd($flags);
-    }
-    public function AutoDJRelay($path)
-    {
-        $flags = $this->bot->autodjRelay($path);
-        dd($flags);
-    }
-
-    public function Status()
-    {
-        $flags = $this->bot->getSourceStatus();
-        dd($flags);
+        if (\Auth::user()->IsRole('Admin')) {
+            $flags = $this->bot->sendRequest($track);
+            dd($flags);
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
     }
 
     // Rate Song
     public function rateSong($rating, $filename)
     {
-        $flags = $this->bot->rateSourceSong('HiveUI',$rating,$filename);
-        dd($flags);
+        if (\Auth::user()->IsRole('Admin')) {
+            $flags = $this->bot->rateSourceSong('HiveUI', $rating, $filename);
+            dd($flags);
+        } else {
+            \App::abort(403, 'Not Authorized.');
+        }
 
     }
 }

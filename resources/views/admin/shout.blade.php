@@ -29,9 +29,11 @@
             <li><u>Requester:</u> <%SongRequester%></li>
         </ul>
         <hr>
-        <div ng-click="BotStart()">Start Bot</div><br/>
-        <div ng-click="BotStop()">Stop Bot</div><br/>
-        <div ng-click="BotSkipSong()">Skip Song</div><img src="<%SkipSongIMG%>"/><br/>
+        <h4>AutoDJ</h4>
+        <div ng-click="BotStart()">Start Bot</div><img style="width: 32px; height: 32px;" src="<%StartBotIMG%>"/><br/>
+        <div ng-click="BotStop()">Stop Bot</div><img style="width: 32px; height: 32px;" src="<%StopBotIMG%>"/><br/>
+        <div ng-click="BotKillDJ()">Kill AutoDJ</div><img style="width: 32px; height: 32px;" src="<%KillAutoDJIMG%>"/><br/>
+        <div ng-click="BotSkipSong()">Skip Song</div><img style="width: 32px; height: 32px;" src="<%SkipSongIMG%>"/><br/>
 
         <hr>
         Rate Song<br />
@@ -40,11 +42,10 @@
         Queue Song : Dropdown of all Songs<br />
         <div ng-click="BotRelay()">Relay Bot</div><br/>
         <hr>
-        <div ng-click="BotRehash()">Reload Bot</div><br/>
-        <div ng-click="BotKillDJ()">Kill AutoDJ</div><br/>
+        <div ng-click="BotRehash()">Reload Bot</div><img style="width: 32px; height: 32px;" src="<%RehashBotIMG%>"/><br/>
 
-        <div ng-click="BotRestart()">Restart Bot - <b>WARNING</b></div><br/>
-        <div ng-click="BotDIE()">Kill Bot - <b>WARNING</b></div><br/>
+        <div ng-click="BotRestart()">Restart Bot - <b>WARNING</b></div><img style="width: 32px; height: 32px;" src="<%RestartBotIMG%>"/><br/>
+        <div ng-click="BotDIE()">Kill Bot - <b>WARNING</b></div><img style="width: 32px; height: 32px;" src="<%DIEBotIMG%>"/><br/>
 
     </div>
 @endsection
