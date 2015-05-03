@@ -53,6 +53,7 @@
                                     <a href="{{URL::to('/playlist/normal.mp3.m3u')}}"><li class="sub-menu-item">Standard MP3</li></a>
                                     <a href="{{URL::to('/playlist/normal.aac.m3u')}}"><li class="sub-menu-item">Standard AAC</li></a>
                                     <a href="{{URL::to('/playlist/high.quality.aac.m3u')}}"><li class="sub-menu-item">High Quality</li></a>
+
                                 </ul>
                             </li>
                             

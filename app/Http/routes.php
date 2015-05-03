@@ -113,7 +113,21 @@ Route::post('admin/u/e/{id}', [
     'uses' => 'Admin\AdminController@UserUpdate'
 ])->where('id', '[0-9]+');
 
-
+Route::get('admin/shout/l', [
+    'uses' => 'Admin\ShoutBotAdminController@index'
+]);
+Route::get('admin/shout/d', [
+    'uses' => 'Admin\ShoutBotAdminController@data'
+]);
+Route::get('admin/shout/bot/skip', [
+    'uses' => 'Admin\ShoutBotAdminController@SkipSong'
+]);
+Route::get('admin/shout/bot/relay', [
+    'uses' => 'Admin\ShoutBotAdminController@relay'
+]);
+Route::get('admin/shout/bot/ShowRelay/{URL}', [
+    'uses' => 'Admin\ShoutBotAdminController@relayURL'
+])->where('URL', '[A-z0-9]+');
 /*
  *    BLOG ADMIN
  */

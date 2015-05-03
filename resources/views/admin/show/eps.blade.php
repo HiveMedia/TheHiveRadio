@@ -1,28 +1,34 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Episodes for {{$show['title']}}</div>
+    <div class="full-content site-dashboard">
 
-                    <div class="panel-body">
-                        <table border="1"><tr><th>Ep Name</th><th> Deets </th></tr>
-                        @foreach($eps as $ep)
+        <div class="panel-heading"><h1>Episodes for {{$show['title']}}</h1></div>
 
-                                <tr><td>{{$ep['title']}}</td>
-                                <td>
-                                    {{$ep['description']}}<br>
-                                    {{$ep['releasedate']}}<br>
-                                    <a href="{{URL::to($ep['URL'])}}">URL{{$ep['URL']}}</a>
-                                </td>
-                                </tr>
-                        @endforeach
-                        </table>
-                    </div>
-                </div>
-            </div>
+        <div class="panel-body">
+            <table border="0">
+                <tr>
+                    <th>Episode</th>
+                    <th>Details</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach($eps as $ep)
+                    <tr>
+                        <td>{{$ep['title']}}</td>
+                        <td>
+                            {{$ep['description']}}<br>
+                            Release Date: {{$ep['releasedate']}}<br>
+                            <hr/>
+                            <a href="{{URL::to($ep['URL'])}}">Link to Track</a>
+                        </td>
+                        <td>
+                            <a href="{{URL::to('/')}}/admin/shout/bot/ShowRelay/{{base64_encode($ep['URL'])}}"> Relay Now </a><br/>
+                            <a href="{{URL::to('/')}}/admin/shout/bot/ShowQueue/{{base64_encode(URL::to($ep['URL']))}}"> Queue Now </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
         </div>
     </div>
+
 @endsection

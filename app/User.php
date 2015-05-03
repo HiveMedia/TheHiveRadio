@@ -94,7 +94,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 {
                     return true;
                 }
-                    echo 'commTest';
                 break;
 
             case 'Commenter': // Blog Stuff

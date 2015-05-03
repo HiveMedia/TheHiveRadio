@@ -18,8 +18,7 @@ class RadioShows extends Model {
     ];
     public function AddHost($user)
     {
-
-        dd($this->id);
+        $this->myStaff()->create(['user_id'=>$user]);
 
     }
     public function RemoveHost($user)
@@ -29,5 +28,9 @@ class RadioShows extends Model {
     public function myeps()
     {
         return $this->hasMany('App\ShowEps','show_id','id');
+    }
+    public function myStaff()
+    {
+        return $this->hasMany('App\Show_staff','show_id','id');
     }
 }

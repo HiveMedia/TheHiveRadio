@@ -34,6 +34,14 @@ Our website and development environment is built off the following technologies:
     create database THR_CMS;
 
 * `php artisan migrate`
+* `php artisan db:seed`
+This will create the following default accounts:
+Username , Password
+'admin@local.host', 'admin'
+'showHost@local.host', 'showHost'
+'showStaff@local.host', 'showStaff'
+'Editor@local.host', 'Editor'
+'Commenter@local.host', 'Commenter'
 
 
 ## Config
@@ -53,6 +61,11 @@ Our website and development environment is built off the following technologies:
     ICECAST_PORT=8000
     ICECAST_USER=
     ICECAST_PASS=
+    
+    ShoutIRC_HOST=127.0.0.1
+    ShoutIRC_PORT=9050
+    ShoutIRC_USER=
+    ShoutIRC_PASS=
     
     COVERS_API_KEY=
     COVERS_NF_IMG=public/img/unknown_artist.png
