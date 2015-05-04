@@ -30,7 +30,7 @@
 				</div>
 
                 <div class="site-player-container grid_6 text-center" ng-app="THR" ng-controller="nowPlayingController">
-                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/<% Artist %>" ng-click="openArtist()"/>
+                    <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/<% Artist %>" ng-click="OpenArtist(<% Artist %>)"/>
 
                     <h2>Now Playing On The Hive Radio</h2>
 

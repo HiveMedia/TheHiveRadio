@@ -23,6 +23,9 @@ thr.controller('nowPlayingController', function ($scope, $http, $interval) {
     }
     $scope.init();
 
+    function OpenArtist($artist){
+        alert($artist);
+    }
     // Talk to IceBreath, get now playing
     function NowPlaying() {
         $scope.Loading = true;
