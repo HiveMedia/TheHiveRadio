@@ -22,13 +22,15 @@
         <p><a href="{{ URL::to('admin/time/c') }}">Book Show</a></p>
 
         <p><a href="{{ URL::to('admin/time/l') }}">Show Schedule</a></p>
+
+        <p><a href="{{ URL::to('admin/shout/l') }}">ShoutIRC Admin</a></p>
         <hr>
 
         <h4>Users</h4>
 
         <p><a href="{{ URL::to('admin/u/l') }}">List Users</a></p>
         <hr>
-        <h2>Schedule</h2>
+        <h4>Schedule</h4>
 
         <div class="panel-body">
             <ul>
@@ -36,15 +38,8 @@
                 <li>{!! Html::Link('admin/time/l','List Schedule') !!}</li>
             </ul>
         </div>
-
-        <h2>Users</h2>
-
-        <div class="panel-body">
-            <ul>
-                <li>{!! Html::Link('admin/u/l','List Users') !!}</li>
-            </ul>
-        </div>
-        <h2>Applications</h2>
+        <hr/>
+        <h4>Applications</h4>
 
         <div class="panel-body">
             <ul>

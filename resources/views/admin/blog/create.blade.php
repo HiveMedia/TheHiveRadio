@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-                    <div class="panel-heading">New Blog Post</div>
+    <div class="full-content site-dashboard">
+                    <div class="panel-heading"><h1>New Blog Post</h1></div>
                     <hr />
 
                     <div class="panel-body">

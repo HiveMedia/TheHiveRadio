@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="full-content site-login header-center text-center">
+    <div class="full-content site-login header-center text-center" ng-app="THR" ng-controller="LoginStuffs">
         <h1>User Login</h1>
 
         @if(count($errors) > 0)

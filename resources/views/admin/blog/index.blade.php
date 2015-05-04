@@ -1,17 +1,15 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Our Blog Posts</div>
+    <div class="full-content site-dashboard">
+
+                    <div class="panel-heading"><h1>Our Blog Posts</h1></div>
 
                     <div class="panel-body">
                         <table border="1">
                             <tr>
                                 <th>Topic</th>
-                                <th>Action</th>
+                                <th>Actions</th>
                             </tr>
                             @foreach($postsdata as $post)
 
@@ -27,7 +25,5 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+
 @endsection

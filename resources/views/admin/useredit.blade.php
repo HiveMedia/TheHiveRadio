@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
-        <div class="panel-heading">Edit User {{$user['name']}}</div>
+    <div class="full-content site-dashboard">
+        <div class="panel-heading"><h1>Edit User {{$user['name']}}</h1></div>
         <hr/>
 
         <div class="panel-body">
