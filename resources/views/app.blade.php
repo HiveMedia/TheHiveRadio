@@ -64,7 +64,7 @@
 
                             <li class="menu-item player-volume-bar">
                                 <i class="fa fa-volume-up"></i> Volume
-                                <div class="volume-bar">
+                                <div class="volume-bar" volume-bar>
                                     <div class="bar-value" ng-style="{width : ( volume + '%' )}"></div>
                                 </div>
                             </li>
