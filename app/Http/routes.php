@@ -113,6 +113,9 @@ Route::post('admin/u/e/{id}', [
     'uses' => 'Admin\AdminController@UserUpdate'
 ])->where('id', '[0-9]+');
 
+/*
+ * ShoutIRC Admin Panel
+ */
 Route::get('admin/shout/l', [
     'uses' => 'Admin\ShoutBotAdminController@index'
 ]);
@@ -146,6 +149,26 @@ Route::get('admin/shout/bot/relay', [
 Route::get('admin/shout/bot/ShowRelay/{URL}', [
     'uses' => 'Admin\ShoutBotAdminController@relayURL'
 ])->where('URL', '[A-z0-9]+');
+
+/*
+ * AutoDJ Panel
+ */
+Route::get('admin/chrissy', [
+    'uses' => 'Admin\AutoDJAdminController@index'
+]);
+Route::get('admin/chrissy/sdb', [
+    'uses' => 'Admin\AutoDJAdminController@SongDB'
+]);
+Route::get('admin/chrissy/songs/', [
+    'uses' => 'Admin\AutoDJAdminController@songsSingle'
+]);
+Route::get('admin/chrissy/songs/{page}', [
+    'uses' => 'Admin\AutoDJAdminController@songs'
+])->where('page', '[0-9]+');
+Route::get('admin/chrissy/song/{id}', [
+    'uses' => 'Admin\AutoDJAdminController@song'
+])->where('page', '[0-9]+');
+
 /*
  *    BLOG ADMIN
  */

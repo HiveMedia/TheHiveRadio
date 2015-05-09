@@ -64,6 +64,18 @@ return [
 			'strict'    => false,
 		],
 
+        'RadioBot' => [
+            'driver'    => 'mysql',
+            'host'      => env('RB_HOST', 'localhost'),
+            'database'  => env('RB_DATABASE', 'forge'),
+            'username'  => env('RB_USERNAME', 'forge'),
+            'password'  => env('RB_PASSWORD', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ],
+
 		'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),
