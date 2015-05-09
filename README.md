@@ -121,3 +121,5 @@ limitations under the License.
 [11]: https://php.net/
 [12]: https://github.com/cogitatio/vagrant-hostsupdater
 [13]: http://bower.io
+[14]: http://npmjs.com
+[15]: http://gulpjs.com
