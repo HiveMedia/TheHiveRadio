@@ -13,7 +13,10 @@ This repo is a copy of [The Hive Radio's][1] website, here you can see how it wo
 Our website and development environment is built off the following technologies:
 
 * [PHP][11] (OOP Server Side Scripting)
-* [Composer][5] (Dependency Management)
+* [Composer][5] (PHP Dependency Management)
+* [Bower][13] (Front-End Package Management)
+* [NPM][14] (Javascript Package Management)
+* [Gulp][15] (Streaming Build System)
 * [Laravel][4] (PHP MVC Framework)
 * [Vagrant][6] (Local Development)
 * [Memcached][7] (Distributed Memory Object Caching System)
@@ -30,19 +33,22 @@ Our website and development environment is built off the following technologies:
 * Run `vagrant up` in the shell.
 * Once the box is online run `vagrant ssh`
 * `cd /var/www/html && sudo /usr/local/composer udpate`
-* Run `mysql`
-    create database THR_CMS;
-
+* `bower update`
+* `npm update`
+* `./node_modules/.bin/gulp`
+* Run `mysql -u root` then query `create database THR_CMS;`
 * `php artisan migrate`
 * `php artisan db:seed`
+
 This will create the following default accounts:
 
-    Username , Password
-    'admin@local.host', 'admin'
-    'showHost@local.host', 'showHost'
-    'showStaff@local.host', 'showStaff'
-    'Editor@local.host', 'Editor'
-    'Commenter@local.host', 'Commenter'
+| Username                  | Password             |
+|:--------------------------|:---------------------|
+| admin@local.host          | admin                |
+| showHost@local.host       | showHost             |
+| showStaff@local.host      | showStaff            |
+| Editor@local.host         | Editor               |
+| Commenter@local.host      | Commenter            |
 
 
 ## Config
@@ -79,7 +85,28 @@ This will create the following default accounts:
     MAILGUN_DOMAIN=
     MAILGUN_SECRET=
     MAIL_FROM=no-reply@mg.hiveradio.net
-    MAIL_NAME='Hive Radio'```
+    MAIL_NAME='Hive Radio'
+
+## License and Author
+
+|                      |                                                    |
+|:---------------------|:---------------------------------------------------|
+| **Author**           | Liam Haworth (<liam.haworth@hivemedia.net.au>)     |
+| **Author**           | Kyle Hunter (<kyle.hunter@hivemedia.net.au>)       |
+|                      |                                                    |
+| **Copyright**        | Copyright (c) 2015, Hive Media Productions.        |
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 [1]: https://hiveradio.net
 [2]: http://opensource.org/licenses/MIT
@@ -93,3 +120,4 @@ This will create the following default accounts:
 [10]: http://mariadb.com
 [11]: https://php.net/
 [12]: https://github.com/cogitatio/vagrant-hostsupdater
+[13]: http://bower.io
