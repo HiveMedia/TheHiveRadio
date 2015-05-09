@@ -28,6 +28,8 @@
 				</div>
 
                 <div class="site-player-container grid_6 text-center" ng-app="THR" ng-controller="nowPlayingController">
+                    <sound-manager></sound-manager>
+
                     <img class="nowplaying-cover" src="{{URL::to('/')}}/icebreath/covers/<% Artist %>" ng-click="openArtist()"/>
 
                     <h2>Now Playing On The Hive Radio</h2>
@@ -57,17 +59,17 @@
                                 </ul>
                             </li>
                             
-                            <li class="menu-item player-button" data-state="play"><i class="fa fa-play-circle"></i> <span>Play</span></li>
+                            <li class="menu-item player-button" music-player="play" ng-show="PlayerAction == 'play'" add-song="stream" ng-click="playerControlButton()"><i class="fa fa-play-circle"></i> <span>Play</span></li>
+                            <li class="menu-item player-button" stop-music ng-show="PlayerAction == 'stop'" ng-click="playerControlButton()"><i class="fa fa-stop"></i> <span>Stop</span></li>
 
                             <li class="menu-item player-volume-bar">
                                 <i class="fa fa-volume-up"></i> Volume
                                 <div class="volume-bar">
-                                    <div class="bar-value" style="width: 50%"></div>
+                                    <div class="bar-value" ng-style="{width : ( volume + '%' )}"></div>
                                 </div>
                             </li>
                         </ul>
 
-                        <audio id="player" src="https://hiveradio.net/normal.mp3"></audio>
                     </div>
 
                 </div>

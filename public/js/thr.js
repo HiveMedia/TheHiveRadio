@@ -2,7 +2,7 @@
  * Created by kyle on 7/04/2015.
  */
 
-var thr = angular.module('THR', []);
+var thr = angular.module('THR', ['angularSoundManager']);
 
 thr.config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('<%');
@@ -348,4 +348,18 @@ thr.controller('nowPlayingController', function ($scope, $http, $interval) {
         NowPlaying();
     }, 10000); // the refresh interval must be in millisec
 
+    $scope.stream = {
+        id: 'one',
+        title: 'The Hive Radio',
+        url: 'http://hiveradio.net/normal.mp3'
+    };
+
+    $scope.PlayerAction = "play";
+
+    $scope.playerControlButton = function() {
+        if($scope.PlayerAction == "play")
+            $scope.PlayerAction = "stop";
+        else
+            $scope.PlayerAction = "play";
+    }
 });
