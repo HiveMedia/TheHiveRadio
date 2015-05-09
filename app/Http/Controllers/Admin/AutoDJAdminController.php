@@ -21,7 +21,7 @@ class AutoDJAdminController extends Controller {
     public function SongDB()
     {
         //
-        return view('admin.auto.songdb');
+        return view('admin.auto.songdb')->with('Songs', $this->Songs(0)->toArray());
     }
     public function songsSingle()
     {
