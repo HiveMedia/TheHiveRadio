@@ -4,6 +4,7 @@
 .env
 /resources/assets/GoogleAPI.p12
 vendor/
+node_modules/
 .env
 *.lock
 *.swp
