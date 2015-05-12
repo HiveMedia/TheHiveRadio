@@ -42,4 +42,10 @@ class AutoDJAdminController extends Controller {
         $music = AutoDJ::find($id);
         return $music;
     }
+    public function search($query)
+    {
+        $music = AutoDJ::where('Artist','like', '%'.$query.'%')->orwhere('Title','like','%'.$query.'%')->get();
+
+        return($music);
+    }
 }

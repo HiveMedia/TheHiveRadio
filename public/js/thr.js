@@ -292,6 +292,24 @@ thr.controller('ShoutBot', function ($scope, $http, $interval) {
     }, 1000); // the refresh interval must be in millisec
 });
 
+thr.controller('AutoDJMusicSearch', function ($scope, $http, $interval) {
+    $scope.text='Nothing Now';
+    $scope.songs=[];
+    $scope.search = function() {
+        $http.get('/admin/autodj/search/'+ $scope.query)
+            .success(function (data,status){
+                $scope.DATA = [];
+                angular.forEach(data, function(value, key) {
+                    console.log(value.ID);
+                    $scope.DATA.push(value);
+                });
+                $scope.songs=$scope.DATA;
+            }).error(function (data, status){
+                $scope.text='ERROR';
+            });
+    }
+});
+
 thr.controller('nowPlayingController', function ($scope, $http, $interval) {
     $scope.Song = 'Loading station data ...';
     $scope.Artist = 'Please wait';
