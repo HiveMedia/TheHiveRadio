@@ -10,7 +10,8 @@
 		"google/apiclient": "~1.1",
         "intervention/image": "2.1.2",
         "guzzlehttp/guzzle": "~4.0",
-		"dasprid/shoutirc-php-client": "~1.0"
+        "hivemedia/icebreath": "dev-master",
+		"hivemedia/shoutirc-php-client": "~1.1"
 
     },
 	"require-dev": {
@@ -23,8 +24,7 @@
             "vendor/google/apiclient/src/Google"
         ],
 		"psr-4": {
-			"App\\": "app/",
-            "Icebreath\\": "icebreath/"
+			"App\\": "app/"
 		}
 	},
 	"autoload-dev": {

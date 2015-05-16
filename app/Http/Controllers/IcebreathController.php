@@ -37,7 +37,7 @@ class IcebreathController extends Controller {
 
         $moduleName = array_shift($args);
         $moduleView = array_shift($args);
-        $moduleClass = "\\Icebreath\\Modules\\$moduleName";
+        $moduleClass = "HiveMedia\\Icebreath\\Modules\\$moduleName";
 
         if(!class_exists($moduleClass)) {
             $resp = array('status' => 'error', 'error' => "Module [$moduleName] was not found", 'timestamp' => time());
