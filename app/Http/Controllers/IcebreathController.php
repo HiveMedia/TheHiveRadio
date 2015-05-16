@@ -71,7 +71,7 @@ class IcebreathController extends Controller {
                 foreach($resp->getHeaders() as $key => $value) {
                     $builtResp->header($key, $value);
                 }
-                $expiresAt = Carbon::now()->addSeconds(15);
+                $expiresAt = Carbon::now()->addSeconds(5);
                 Cache::put($CacheKey, $builtResp, $expiresAt);
             }
 

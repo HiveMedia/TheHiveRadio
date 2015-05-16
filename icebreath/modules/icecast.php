@@ -160,6 +160,7 @@ class icecast extends Module {
             else
                 $server_data->server_listeners_max += (int)$mount_point->max_listeners;
             $unique_listeners = $this->getUniqueListenersOnMount((string)$mount_point["mount"]);
+
             $server_data->server_listeners_unique += $unique_listeners;
 
             if($mount_point->source_ip == null)
@@ -232,9 +233,11 @@ class icecast extends Module {
         $data = new \SimpleXMLElement($data);
         $unique_listener_array = array();
 
-        foreach($data->source->listener as $listener)
-            if(!in_array($listener->IP, $unique_listener_array))
-                array_push($unique_listener_array, $listener->IP);
+        foreach($data->source->listener as $listener) {
+            if (!in_array($listener->IP, $unique_listener_array)) {
+                array_push($unique_listener_array, (string) $listener->IP);
+            }
+        }
 
         return count($unique_listener_array);
     }
