@@ -21,7 +21,7 @@ class AutoDJAdminController extends Controller {
     public function SongDB()
     {
         //
-        return view('admin.auto.songdb');
+        return view('admin.auto.songdb')->with('Songs', $this->Songs(0)->toArray());
     }
     public function songsSingle()
     {
@@ -41,5 +41,11 @@ class AutoDJAdminController extends Controller {
     {
         $music = AutoDJ::find($id);
         return $music;
+    }
+    public function search($query)
+    {
+        $music = AutoDJ::where('Artist','like', '%'.$query.'%')->orwhere('Title','like','%'.$query.'%')->get();
+
+        return($music);
     }
 }

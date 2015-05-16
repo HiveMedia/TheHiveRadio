@@ -153,6 +153,7 @@ Route::get('admin/shout/bot/ShowRelay/{URL}', [
 /*
  * AutoDJ Panel
  */
+// TEMP
 Route::get('admin/chrissy', [
     'uses' => 'Admin\AutoDJAdminController@index'
 ]);
@@ -167,8 +168,14 @@ Route::get('admin/chrissy/songs/{page}', [
 ])->where('page', '[0-9]+');
 Route::get('admin/chrissy/song/{id}', [
     'uses' => 'Admin\AutoDJAdminController@song'
-])->where('page', '[0-9]+');
-
+])->where('id', '[0-9]+');
+// REAL
+Route::get('/admin/autodj/search/{query}', [
+    'uses' => 'Admin\AutoDJAdminController@search'
+])->where('query', '[A-z0-9.() ]+');
+Route::get('/admin/autodj/edit/{id}', [
+    'uses' => 'Admin\AutoDJAdminController@edit'
+])->where('id', '[0-9]+');
 /*
  *    BLOG ADMIN
  */
