@@ -19,6 +19,7 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    
     public function UserList()
     {
         if (\Auth::user()->IsRole('Admin')) {
